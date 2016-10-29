@@ -7,7 +7,9 @@ package bancoDados;
 
 import construtor.BelasMensagens;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  *
@@ -37,5 +39,20 @@ public class Operacoes {
         stm.setInt(2,Blmsg.getTipo());
         stm.setInt(3,Blmsg.getCodigo());
         stm.executeUpdate();
+    }
+    public static BelasMensagens consultaMsg(Integer cod) throws SQLException{
+        BelasMensagens blmsg = new BelasMensagens();
+        Statement stm = Conexao.statement();
+        ResultSet resul = stm.executeQuery("select * from bl_mensagens where codigo = " + cod );
+        
+        resul.next();
+        if (!resul.wasNull()){
+            blmsg.setCodigo(resul.getInt("codigo"));
+            blmsg.setMensagem(resul.getString("mensagem"));
+            blmsg.setTipo(resul.getInt("tipo"));
+        }
+        
+        return blmsg;
+        
     }
 }
