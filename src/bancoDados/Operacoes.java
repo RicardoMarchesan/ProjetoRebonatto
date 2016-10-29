@@ -10,6 +10,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -53,6 +55,23 @@ public class Operacoes {
         }
         
         return blmsg;
+        
+    }
+    public static List<BelasMensagens> listamsg(Integer tipo) throws SQLException{
+        
+        List<BelasMensagens> lista = new ArrayList();
+        Statement stm = Conexao.statement();
+        String sql = "select * from bl_mensagens where tipo = "+ tipo;
+        
+        ResultSet resul = stm.executeQuery(sql);
+        
+        while (resul.next()){
+            BelasMensagens blmsg = new BelasMensagens();
+            blmsg.setMensagem(resul.getString("mensagem"));
+            lista.add(blmsg);
+        }
+        
+        return lista;
         
     }
 }
