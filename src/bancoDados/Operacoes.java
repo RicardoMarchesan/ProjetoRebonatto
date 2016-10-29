@@ -23,4 +23,19 @@ public class Operacoes {
         stm.setInt(3,BLmsg.getTipo());
         stm.executeUpdate(); 
     }
+    public static void deletaMsg(BelasMensagens Blmsg) throws SQLException{
+        String sql = "delete from bl_mensagens where codigo = ?";
+        PreparedStatement stm = Conexao.getPrepared(sql);
+        stm.setInt(1,Blmsg.getCodigo());
+        stm.executeUpdate();
+    }
+    
+    public static void alteraMsg(BelasMensagens Blmsg) throws SQLException{
+        String sql = "update bl_mensagens set mensagem = ?, tipo = ? where codigo = ?";
+        PreparedStatement stm = Conexao.getPrepared(sql);
+        stm.setString(1,Blmsg.getMensagem());
+        stm.setInt(2,Blmsg.getTipo());
+        stm.setInt(3,Blmsg.getCodigo());
+        stm.executeUpdate();
+    }
 }
