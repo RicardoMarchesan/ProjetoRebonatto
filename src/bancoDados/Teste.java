@@ -13,7 +13,7 @@ public class Teste {
      
     public static void main(String[] args) {
      Conexao conecta = new Conexao();
-     conecta.conecta();
+     //conecta.conecta();
       
     }
 }
