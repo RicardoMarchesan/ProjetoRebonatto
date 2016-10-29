@@ -49,4 +49,13 @@ public class Conexao {
         }
 
     }
+    public static Statement statement (){
+        try {
+          return conecta().createStatement();
+        } catch (Exception e2) {
+           System.out.println("Erro ao criar statement");  
+           return null;
+        }
+   
+    }
 }
