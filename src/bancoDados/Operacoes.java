@@ -74,4 +74,19 @@ public class Operacoes {
         return lista;
         
     }
+    public static BelasMensagens consultaTipo(Integer tipo) throws SQLException{
+        BelasMensagens blmsg = new BelasMensagens();
+        Statement stm = Conexao.statement();
+        ResultSet resul = stm.executeQuery("select * from bl_mensagens where tipo = " + tipo );
+        
+        resul.next();
+        if (!resul.wasNull()){
+            blmsg.setTipo(resul.getInt("tipo"));
+            blmsg.setCodigo(resul.getInt("codigo"));
+            blmsg.setMensagem(resul.getString("mensagem"));  
+        }
+        
+        return blmsg;
+        
+    }
 }
