@@ -16,6 +16,7 @@ public class Teste {
     public static void main(String[] args) throws SQLException {
      Conexao conecta = new Conexao();
      conecta.conecta();
+        System.out.println("teste commit");
       
     }
 }
