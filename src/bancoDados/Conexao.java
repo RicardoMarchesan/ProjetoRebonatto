@@ -33,7 +33,9 @@ public class Conexao {
     public static Connection conecta() throws SQLException {
         try {//carrega o drive postgre
             Class.forName("org.postgresql.Driver");
+            
             conn = DriverManager.getConnection(caminho, usuario, senha);
+            //System.out.println("oiii");
         } catch (ClassNotFoundException e) {
             System.out.println("Driver não encontrado!" + e);
         }

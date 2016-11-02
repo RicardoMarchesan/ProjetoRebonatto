@@ -5,15 +5,17 @@
  */
 package bancoDados;
 
+import java.sql.SQLException;
+
 /**
  *
  * @author djess
  */
 public class Teste {
      
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
      Conexao conecta = new Conexao();
-     //conecta.conecta();
+     conecta.conecta();
       
     }
 }
