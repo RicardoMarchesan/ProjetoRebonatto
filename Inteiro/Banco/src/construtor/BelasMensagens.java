@@ -26,6 +26,10 @@ public class BelasMensagens implements Serializable{//vai transferir via socket
         this.tipo = tipo;
     }
 
+    public BelasMensagens(String msgcod, String msg, String tipomsg) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
    
     public int getCodigo() {
         return codigo;
