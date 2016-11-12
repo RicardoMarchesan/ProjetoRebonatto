@@ -6,6 +6,7 @@
 package controler;
 
 import java.sql.SQLException;
+import model.BelasMensagens;
 
 /**
  *
@@ -16,7 +17,9 @@ public class Teste {
     public static void main(String[] args) throws SQLException {
      Conexao conecta = new Conexao();
      conecta.conecta();
-        System.out.println("teste commit");
+        BelasMensagens bm = new BelasMensagens(3, "Exemplo 3 ", 5);
+        Operacoes op = new Operacoes();
+        op.adicionaMsg(bm);
       
     }
 }
