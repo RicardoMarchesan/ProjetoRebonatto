@@ -57,7 +57,7 @@ public class Operacoes {
         return blmsg;
         
     }
-    public static List<BelasMensagens> listamsg(Integer tipo) throws SQLException{
+    public static List<BelasMensagens> listaMsgInt(Integer tipo) throws SQLException{
         
         List<BelasMensagens> lista = new ArrayList();
         Statement stm = Conexao.statement();
@@ -74,6 +74,28 @@ public class Operacoes {
         return lista;
         
     }
+    
+    public static List<BelasMensagens> listaMsg() throws SQLException{
+        
+        List<BelasMensagens> lista = new ArrayList();
+        Statement stm = Conexao.statement();
+        String sql = "select * from bl_mensagens order by codigo";
+        
+        ResultSet resul = stm.executeQuery(sql);
+        
+        while (resul.next()){
+            BelasMensagens blmsg = new BelasMensagens();
+            blmsg.setCodigo(resul.getInt("codigo"));
+            blmsg.setMensagem(resul.getString("mensagem"));
+            blmsg.setTipo(resul.getInt("tipo"));
+            lista.add(blmsg);
+        }
+        System.out.println("lista: " + lista.toString());
+        
+        return lista;
+        
+    }
+    
     public static BelasMensagens consultaTipo(Integer tipo) throws SQLException{
         BelasMensagens blmsg = new BelasMensagens();
         Statement stm = Conexao.statement();

@@ -5,7 +5,11 @@
  */
 package com.rest;
 
+import controler.Conexao;
+import controler.Operacoes;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Consumes;
@@ -57,6 +61,16 @@ public class WSRest {
                 }			
             }
 		return obj.toString();
+        
+    }
+    
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<BelasMensagens> getlista() throws SQLException {
+
+        Operacoes op = new Operacoes();
+        System.out.println("chegou" + op.listaMsg().toString());
+        return op.listaMsg();
         
     }
 

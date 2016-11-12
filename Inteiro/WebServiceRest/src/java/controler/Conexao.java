@@ -5,15 +5,11 @@
  */
 package controler;
 
-import static java.lang.Character.UnicodeBlock.forName;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 import java.sql.PreparedStatement;
 
 /**
