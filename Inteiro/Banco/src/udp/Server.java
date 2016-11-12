@@ -50,26 +50,11 @@ public class Server {
             split = sentence.split("#");
             int qtdmsg = Integer.parseInt(split[0]);
 
-            if (qtdmsg == 1) // Se a mensagem for de tamanho 1 packet, faço tudo normalmente
-            {
-                serverSocket.receive(receivePacket);
-                sentence = new String(receivePacket.getData());
-                split = sentence.split("#");
-                if (split.length > 1) //Splitei, se houve split é o conjunto de dados
-                {
-                    tipoop = split[0];
-                    int msgcod = Integer.parseInt(split[1]);
-                    int tipomsg = Integer.parseInt(split[2]);
-                    bmsg.setCodigo(msgcod);
-                    bmsg.setTipo(tipomsg);
-                } else {
-                    msg += split[0]; // Se não houve split, é a BelaMSG
-                    bmsg.setMensagem(msg);
-                }
-            } else // Mensagem maior que 1 packet
-            {
-                int tam = Character.getNumericValue(sentence.charAt(0)); // Pego o tamanho da mensagem
-                for (int i = 0; i < tam; i++) // Fico recebendo a mensagem
+            if (qtdmsg == 404) {
+                tipoop = "404";
+            } else {
+
+                if (qtdmsg == 1) // Se a mensagem for de tamanho 1 packet, faço tudo normalmente
                 {
                     serverSocket.receive(receivePacket);
                     sentence = new String(receivePacket.getData());
@@ -82,10 +67,30 @@ public class Server {
                         bmsg.setCodigo(msgcod);
                         bmsg.setTipo(tipomsg);
                     } else {
-                        msg += split[0]; // Se não houve split, é a BelaMSG;
+                        msg += split[0]; // Se não houve split, é a BelaMSG
+                        bmsg.setMensagem(msg);
                     }
+                } else // Mensagem maior que 1 packet
+                {
+                    int tam = Character.getNumericValue(sentence.charAt(0)); // Pego o tamanho da mensagem
+                    for (int i = 0; i < tam; i++) // Fico recebendo a mensagem
+                    {
+                        serverSocket.receive(receivePacket);
+                        sentence = new String(receivePacket.getData());
+                        split = sentence.split("#");
+                        if (split.length > 1) //Splitei, se houve split é o conjunto de dados
+                        {
+                            tipoop = split[0];
+                            int msgcod = Integer.parseInt(split[1]);
+                            int tipomsg = Integer.parseInt(split[2]);
+                            bmsg.setCodigo(msgcod);
+                            bmsg.setTipo(tipomsg);
+                        } else {
+                            msg += split[0]; // Se não houve split, é a BelaMSG;
+                        }
+                    }
+                    bmsg.setMensagem(msg); // Mensagem concatenada completa
                 }
-                bmsg.setMensagem(msg); // Mensagem concatenada completa
             }
             // A partir desse momento o objeto BelaMensagem é pra estar pronto
 
