@@ -12,6 +12,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import org.json.JSONObject;
 
 /**
  *
@@ -72,27 +73,29 @@ public class Operacoes {
         }
         
         return lista;
-        
     }
-    
-    public static List<BelasMensagens> listaMsg() throws SQLException{
+    public static String listaMsg() throws SQLException{
         
         List<BelasMensagens> lista = new ArrayList();
         Statement stm = Conexao.statement();
         String sql = "select * from bl_mensagens order by codigo";
         
         ResultSet resul = stm.executeQuery(sql);
-        
+        JSONObject j = new JSONObject();
+
         while (resul.next()){
             BelasMensagens blmsg = new BelasMensagens();
             blmsg.setCodigo(resul.getInt("codigo"));
             blmsg.setMensagem(resul.getString("mensagem"));
             blmsg.setTipo(resul.getInt("tipo"));
             lista.add(blmsg);
+            j.accumulate("codigo", blmsg.getCodigo());
+            j.accumulate("mensagem", blmsg.getMensagem());
+            j.accumulate("tipo", blmsg.getTipo());
         }
         System.out.println("lista: " + lista.toString());
         
-        return lista;
+        return j.toString();
         
     }
     

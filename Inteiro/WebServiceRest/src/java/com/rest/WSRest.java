@@ -66,7 +66,7 @@ public class WSRest {
     
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<BelasMensagens> getlista() throws SQLException {
+    public String getlista() throws SQLException {
 
         Operacoes op = new Operacoes();
         System.out.println("chegou" + op.listaMsg().toString());
