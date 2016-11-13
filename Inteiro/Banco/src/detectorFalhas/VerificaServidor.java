@@ -5,59 +5,60 @@
  */
 package detectorFalhas;
 
+import java.io.IOException;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
+import java.net.SocketException;
+import java.net.UnknownHostException;
+import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author User
  */
-public class Detector {
+public class VerificaServidor extends Thread {
 
-    public static void main(String[] args) throws Exception {     
-        
-        VerificaServidor verifica = new VerificaServidor();
-        Thread threadVerifica = new Thread(verifica);
-        threadVerifica.start();
-        
-        VerificaBD verifica2 = new VerificaBD();
-        Thread threadVerifica2 = new Thread(verifica2);
-        threadVerifica2.start();
-        
-        /*   DatagramSocket soc;
+    public void run() {
+        // public void ThreadVerfica() throws UnknownHostException, SocketException, IOException {   
+        DatagramSocket soc = null;
         DatagramPacket pacote;
         InetAddress IPAdress;
         String msg;
         int port = 2006;
         int tmp; // tempo de verificação do servidor
-        int minutos; // tempo de verificação de duplicidade
         byte[] receiveData = new byte[1024];  // copiei do server do psiu
         byte[] sendData = new byte[1024];      // copiei do server do psiu 
 
-//aqui começa para ver se o server está vivo?
-
-        System.out.println("Digite o tempo em segundos para verificar o servidor: ");
+        System.out.println("Digite primeiro o tempo em segundos para verificar o servidor: ");
         Scanner input = new Scanner(System.in);
         tmp = input.nextInt();
         tmp = tmp * 1000; //converter ms em s
-        
-        System.out.println("Digite o tempo em minutos para verificar o banco: ");
-        Scanner input2 = new Scanner(System.in);
-        minutos = input2.nextInt();
-        minutos = (minutos * 1000) * 60; //converter ms em s
-        System.out.println(minutos);
-        
+
         while (true) {
             try {
                 Thread.sleep(tmp); //usado para definir de quanto em quanto tempo vai fazer a verificação
             } catch (Exception e) {
                 System.out.println("Erro na execução do tempo.");
             }
-            //System.out.println("Servidor");
-            soc = new DatagramSocket();
+            try {
+                //System.out.println("Servidor");
+                soc = new DatagramSocket();
+                IPAdress = InetAddress.getByName("localhost");
+                pacote = new DatagramPacket(sendData, sendData.length, IPAdress, port);
+                soc.send(pacote);
+                System.out.println("Servidor esta vivo? ");
+            } catch (SocketException ex) {
+                Logger.getLogger(VerificaServidor.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (UnknownHostException ex) {
+                Logger.getLogger(VerificaServidor.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(VerificaServidor.class.getName()).log(Level.SEVERE, null, ex);
+            }
             msg = "404#";
             sendData = msg.getBytes();
-            IPAdress = InetAddress.getByName("localhost");
-            pacote = new DatagramPacket(sendData, sendData.length, IPAdress, port);
-            soc.send(pacote);
-            System.out.println("Servidor esta vivo? ");
 
             try {
                 pacote = new DatagramPacket(receiveData, receiveData.length);
@@ -73,19 +74,7 @@ public class Detector {
             } catch (Exception e) {
                 System.out.println("Servidor morreu, verifique");
             }
-        // aqui para verificar duplicidade
-        
-        }  */
-
-    }
-
-    
-
-    }
-    
-   /* public class verificaServid extends Thread {
-
-        public void run() {
-
         }
-    }*/
+
+    }
+}
