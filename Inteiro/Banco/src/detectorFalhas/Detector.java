@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package detectorFalhas;
-
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
@@ -50,24 +49,19 @@ public class Detector {
             System.out.println("Servidor esta vivo? ");
 
             try {
-            pacote = new DatagramPacket(receiveData, receiveData.length);
-            soc.setSoTimeout(1000);  //tempo sem resposta para declarar servidor morto
-            soc.receive(pacote);
-                       String msgresposta = new String(pacote.getData());
-            System.out.println(msgresposta);
-         //   if (msgresposta.equals("Alive!"))
+                pacote = new DatagramPacket(receiveData, receiveData.length);
+                soc.setSoTimeout(1000);  //tempo sem resposta para declarar servidor morto
+                soc.receive(pacote);
+                String msgresposta = new String(pacote.getData());
+                System.out.println(msgresposta);
+                //   if (msgresposta.equals("Alive!"))
                 System.out.println("server vivo! ");
-         //   else System.out.println("Verifique Servidor morreu");
-            soc.close();
-            
-            }catch (Exception e){
+                //   else System.out.println("Verifique Servidor morreu");
+                soc.close();
+
+            } catch (Exception e) {
                 System.out.println("Servidor morreu, verifique");
             }
-            
-            
-            }
-
         }
     }
-
-
+}
