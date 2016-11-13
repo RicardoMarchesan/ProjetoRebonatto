@@ -29,31 +29,66 @@ public class tela extends javax.swing.JFrame {
 
         painelMenu = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
+        botaoadd = new javax.swing.JButton();
+        botaoaltera = new javax.swing.JButton();
+        botaoexclui = new javax.swing.JButton();
+        botaoconsulta = new javax.swing.JButton();
+        botaolista = new javax.swing.JButton();
+        botaoaleat = new javax.swing.JButton();
+        botaofechar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("Web Service Soap");
 
-        jButton1.setText("Adicionar Mensagem");
+        botaoadd.setText("Adicionar Mensagem");
+        botaoadd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoaddActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Alterar Mensagem");
+        botaoaltera.setText("Alterar Mensagem");
+        botaoaltera.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoalteraActionPerformed(evt);
+            }
+        });
 
-        jButton3.setText("Excluir Mensagem");
+        botaoexclui.setText("Excluir Mensagem");
+        botaoexclui.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoexcluiActionPerformed(evt);
+            }
+        });
 
-        jButton4.setText("Consultar Mensagem");
+        botaoconsulta.setText("Consultar Mensagem");
+        botaoconsulta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoconsultaActionPerformed(evt);
+            }
+        });
 
-        jButton5.setText("Listar por Tipo");
+        botaolista.setText("Listar por Tipo");
+        botaolista.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaolistaActionPerformed(evt);
+            }
+        });
 
-        jButton6.setText("Mensagem Aleatória");
+        botaoaleat.setText("Mensagem Aleatória");
+        botaoaleat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoaleatActionPerformed(evt);
+            }
+        });
 
-        jButton7.setText("Fechar");
+        botaofechar.setText("Fechar");
+        botaofechar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaofecharActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout painelMenuLayout = new javax.swing.GroupLayout(painelMenu);
         painelMenu.setLayout(painelMenuLayout);
@@ -67,15 +102,15 @@ public class tela extends javax.swing.JFrame {
                     .addGroup(painelMenuLayout.createSequentialGroup()
                         .addGap(121, 121, 121)
                         .addGroup(painelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton4)
-                            .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(botaoaltera, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(botaoadd, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(botaoexclui, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(botaoconsulta)
+                            .addComponent(botaolista, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(botaoaleat, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(painelMenuLayout.createSequentialGroup()
                         .addGap(164, 164, 164)
-                        .addComponent(jButton7)))
+                        .addComponent(botaofechar)))
                 .addContainerGap(126, Short.MAX_VALUE))
         );
         painelMenuLayout.setVerticalGroup(
@@ -84,19 +119,19 @@ public class tela extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1)
+                .addComponent(botaoadd)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2)
+                .addComponent(botaoaltera)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton3)
+                .addComponent(botaoexclui)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton4)
+                .addComponent(botaoconsulta)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton5)
+                .addComponent(botaolista)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton6)
+                .addComponent(botaoaleat)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton7)
+                .addComponent(botaofechar)
                 .addContainerGap(41, Short.MAX_VALUE))
         );
 
@@ -113,6 +148,44 @@ public class tela extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void botaoaddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoaddActionPerformed
+        new addtela().setVisible(true);
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botaoaddActionPerformed
+
+    private void botaoalteraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoalteraActionPerformed
+            new alteratela().setVisible(true);
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botaoalteraActionPerformed
+
+    private void botaoexcluiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoexcluiActionPerformed
+            new excluitela().setVisible(true);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botaoexcluiActionPerformed
+
+    private void botaoconsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoconsultaActionPerformed
+            new consultatela().setVisible(true);
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botaoconsultaActionPerformed
+
+    private void botaolistaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaolistaActionPerformed
+            new listartipotela().setVisible(true);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botaolistaActionPerformed
+
+    private void botaoaleatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoaleatActionPerformed
+            new aleatoriatela().setVisible(true);
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botaoaleatActionPerformed
+
+    private void botaofecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaofecharActionPerformed
+        this.dispose();        // TODO add your handling code here:
+    }//GEN-LAST:event_botaofecharActionPerformed
 
     /**
      * @param args the command line arguments
@@ -150,13 +223,13 @@ public class tela extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
+    private javax.swing.JButton botaoadd;
+    private javax.swing.JButton botaoaleat;
+    private javax.swing.JButton botaoaltera;
+    private javax.swing.JButton botaoconsulta;
+    private javax.swing.JButton botaoexclui;
+    private javax.swing.JButton botaofechar;
+    private javax.swing.JButton botaolista;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel painelMenu;
     // End of variables declaration//GEN-END:variables
