@@ -122,6 +122,7 @@ public class Server {
                     sendData = alive.getBytes();
                     sendPacket = new DatagramPacket(sendData, sendData.length, IPAddress, port);
                     serverSocket.send(sendPacket);
+                    break;
                 case 1: // Adiciona
                     Operacoes.adicionaMsg(bmsg);
                     System.out.println("Adiciona");
