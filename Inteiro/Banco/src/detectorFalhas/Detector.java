@@ -13,10 +13,13 @@ public class Detector {
 
     public static void main(String[] args) throws Exception {     
         
+        
+        //inicia thread verificar servidor udp eu acho
         VerificaServidor verifica = new VerificaServidor();
         Thread threadVerifica = new Thread(verifica);
         threadVerifica.start();
         
+        // inicia thread ver frase duplicadas eu acho
         VerificaBD verifica2 = new VerificaBD();
         Thread threadVerifica2 = new Thread(verifica2);
         threadVerifica2.start();
