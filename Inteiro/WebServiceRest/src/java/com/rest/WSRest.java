@@ -14,6 +14,7 @@ import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.Produces;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PUT;
 import javax.ws.rs.core.MediaType;
@@ -77,10 +78,10 @@ public class WSRest {
      * PUT method for updating or creating an instance of WebServiceRest
      * @param content representation for the resource
      */
-    @PUT
+    @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("adicionamsg")
-    public void putJson(String j) throws SQLException {
+    public void postJson(String j) throws SQLException {
         Operacoes op = new Operacoes();
         System.out.println("String json chegou:" + j);
         JSONObject my_obj = new JSONObject(j);

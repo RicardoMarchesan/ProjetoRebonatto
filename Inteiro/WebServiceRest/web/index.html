@@ -47,9 +47,9 @@
     	var tipoPost = document.getElementById("tipoPost").value;
     	var json = '{"id":' + idPost + ', "mensagem":"' + mensagemPost + '","tipo":' + tipoPost + '}';
     	
-    	var urlPut = "http://localhost:8080/WebServiceRest/javaws/wsrest/adicionamsg";
+    	var urlPost = "http://localhost:8080/WebServiceRest/javaws/wsrest/adicionamsg";
 
-        xmlhttp.open('PUT',urlPut,true);
+        xmlhttp.open('POST',urlPost,true);
         xmlhttp.setRequestHeader('Content-Type', 'application/json');
         xmlhttp.send(json);
         
@@ -58,7 +58,7 @@
   </script>
   </head>
   <body  onload="init()">
-   <h1>Funcionários </h1>
+   <h3>Adiciona Bela Mensagem  </h3>
    
     <table>
     
@@ -74,14 +74,24 @@
 
    <tr>
        <td>Tipo: </td>
-       <td><input type="text" id="tipoPost" size="10"/> </td>
+       <td>
+           <select id="tipoPost">
+               <option value = 1> Motivação </option>
+               <option value = 2> Felicitações </option>
+               <option value = 3> Saudade </option>
+               <option value = 4> Superação de Problemas </option>
+               <option value = 5> Amor </option>
+               <option value = 6> Experiência de Vida </option>
+               <option value = 7> Caráter </option>
+               <option value = 8> Top </option>
+       </select></td>
    	   <td><input type="button" value="Adicionar" onclick="postdetails()" /></td>
    </tr>
- 
- 
+   <br>
    </table>
-   
-   <br><br><br><br>
+      <br><br>
+       <h3>Consulta Bela Mensagem  </h3>
+
    <table>
    <tr>
        <td> ID:  </td>
