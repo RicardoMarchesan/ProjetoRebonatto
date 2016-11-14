@@ -54,13 +54,13 @@ public class Client {
         String n = new String();
         String enviar = new String();
 
-        DatagramSocket serverSocket = new DatagramSocket(2006);
+        DatagramSocket serverSocket = new DatagramSocket(2007);
         DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
-        
+
         String sentence = new String();
         String[] split;
         int qtdmsg;
-        
+
         switch (opc) {
             case 1: // Adiciona msg
                 System.out.println("Digite a mensagem:");
@@ -93,6 +93,8 @@ public class Client {
                     clientSocket.send(sendPacket);
                 }
 
+                System.out.println("Mensagem adicionada.");
+
                 break;
             case 2: // Altera a msg
                 System.out.println("Digite a mensagem:");
@@ -105,7 +107,7 @@ public class Client {
                 System.out.println("Digite o tipo da mensagem:");
                 input = new Scanner(System.in);
                 tipomsg = input.nextLine();
-                System.out.println(sendmsg.length);
+//                System.out.println(sendmsg.length);
 
                 n = new String();
                 n = Integer.toString(sendmsg.length) + "#";
@@ -124,6 +126,8 @@ public class Client {
                     sendPacket = new DatagramPacket(sendData, sendData.length, IPAddress, 2006);
                     clientSocket.send(sendPacket);
                 }
+
+                System.out.println("Mensagem alterada.");
 
                 break;
             case 3: // Exclui 
@@ -147,6 +151,8 @@ public class Client {
                 sendData = enviar.getBytes();
                 sendPacket = new DatagramPacket(sendData, sendData.length, IPAddress, 2006);
                 clientSocket.send(sendPacket); // Envia mensagem em branco para acoplar ao padrão de comunicação
+
+                System.out.println("Mensagem excluída.");
 
                 break;
             case 4: // Consultar mensagem
@@ -179,7 +185,8 @@ public class Client {
                 //BelasMensagens bmsg = new BelasMensagens();
 
                 split = sentence.split("#");
-                qtdmsg = Integer.parseInt(split[0]); // Recebi a quantidade de pacotes necessários p/ a msg
+                System.out.println(split[0]);
+                qtdmsg = Integer.parseInt(split[0].trim()); // Recebi a quantidade de pacotes necessários p/ a msg
 
                 for (int i = 0; i < qtdmsg; i++) {
                     serverSocket.receive(receivePacket);
@@ -187,7 +194,7 @@ public class Client {
                     msg = new String();
                     msg += sentence;
                 }
-                System.out.println("Sua mensagem é: "+msg);
+                System.out.println("Sua mensagem é: " + msg);
 
                 break;
             case 5: // Lista por tipo
@@ -211,32 +218,31 @@ public class Client {
                 sendData = enviar.getBytes();
                 sendPacket = new DatagramPacket(sendData, sendData.length, IPAddress, 2006);
                 clientSocket.send(sendPacket);
-                
+
                 // Começo a receber os pacotes da lista consultada
                 receivePacket = new DatagramPacket(receiveData, receiveData.length);
                 serverSocket.receive(receivePacket);
                 sentence = new String(receivePacket.getData()); // Recebi o tamanho da lista
                 split = sentence.split("#");
-                int tamlista = Integer.parseInt(split[0]);
-                
-                for (int i=0; i<tamlista; i++)
-                {
+                int tamlista = Integer.parseInt(split[0].trim());
+
+                for (int i = 0; i < tamlista; i++) {
                     receivePacket = new DatagramPacket(receiveData, receiveData.length);
-                serverSocket.receive(receivePacket);
-                sentence = new String(receivePacket.getData()); // Recebi o tamanho da mensagem
-                msg = new String();
-                //BelasMensagens bmsg = new BelasMensagens();
-
-                split = sentence.split("#");
-                qtdmsg = Integer.parseInt(split[0]); // Recebi a quantidade de pacotes necessários p/ a msg
-
-                for (int j = 0; j < qtdmsg; j++) {
                     serverSocket.receive(receivePacket);
-                    sentence = new String(receivePacket.getData());
+                    sentence = new String(receivePacket.getData()); // Recebi o tamanho da mensagem
                     msg = new String();
-                    msg += sentence;
-                }
-                    System.out.println("Mensagem "+i+": "+msg);
+                    //BelasMensagens bmsg = new BelasMensagens();
+
+                    split = sentence.split("#");
+                    qtdmsg = Integer.parseInt(split[0]); // Recebi a quantidade de pacotes necessários p/ a msg
+
+                    for (int j = 0; j < qtdmsg; j++) {
+                        serverSocket.receive(receivePacket);
+                        sentence = new String(receivePacket.getData());
+                        msg = new String();
+                        msg += sentence;
+                    }
+                    System.out.println("Mensagem " + i + ": " + msg);
                 }
 
                 break;
@@ -269,7 +275,7 @@ public class Client {
                 //BelasMensagens bmsg = new BelasMensagens();
 
                 split = sentence.split("#");
-                qtdmsg = Integer.parseInt(split[0]); // Recebi a quantidade de pacotes necessários p/ a msg
+                qtdmsg = Integer.parseInt(split[0].trim()); // Recebi a quantidade de pacotes necessários p/ a msg
 
                 for (int i = 0; i < qtdmsg; i++) {
                     serverSocket.receive(receivePacket);
@@ -277,21 +283,20 @@ public class Client {
                     msg = new String();
                     msg += sentence;
                 }
-                System.out.println("Sua mensagem é: "+msg);
-                
+                System.out.println("Sua mensagem é: " + msg);
+
                 break;
             case 0:
                 System.out.println("Você escolheu sair do programa.");
                 break;
-
             default:
                 System.out.println("Opção inválida");
         }
-        
+    }
+
 //        System.out.println("Digite a mensagem");
 //        BufferedReader inFromUser
 //                = new BufferedReader(new InputStreamReader(System.in));
-
 //        String sentence = inFromUser.readLine();
 //        sendData = sentence.getBytes();
 //        DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, IPAddress, 2006);
@@ -301,5 +306,4 @@ public class Client {
 //        String modifiedSentence = new String(receivePacket.getData());
 //        System.out.println("Server:" + modifiedSentence);
 //        clientSocket.close();
-    }
 }

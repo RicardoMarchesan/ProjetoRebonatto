@@ -49,7 +49,7 @@ public class Server {
             BelasMensagens bmsg = new BelasMensagens();
 
             split = sentence.split("#");
-            int qtdmsg = Integer.parseInt(split[0]);
+            int qtdmsg = Integer.parseInt(split[0].trim());
 
             if (qtdmsg == 404) {
                 tipoop = "404";
@@ -62,9 +62,10 @@ public class Server {
                     split = sentence.split("#");
                     if (split.length > 1) //Splitei, se houve split é o conjunto de dados
                     {
-                        tipoop = split[0];
-                        int msgcod = Integer.parseInt(split[1]);
-                        int tipomsg = Integer.parseInt(split[2]);
+                        tipoop = split[0].trim();
+                        int msgcod = Integer.parseInt(split[1].trim());
+                        //System.out.println(split[2]);
+                        int tipomsg = Integer.parseInt(split[2].trim());
                         bmsg.setCodigo(msgcod);
                         bmsg.setTipo(tipomsg);
                     } else {
@@ -82,8 +83,8 @@ public class Server {
                         if (split.length > 1) //Splitei, se houve split é o conjunto de dados
                         {
                             tipoop = split[0];
-                            int msgcod = Integer.parseInt(split[1]);
-                            int tipomsg = Integer.parseInt(split[2]);
+                            int msgcod = Integer.parseInt(split[1].trim());
+                            int tipomsg = Integer.parseInt(split[2].trim());
                             bmsg.setCodigo(msgcod);
                             bmsg.setTipo(tipomsg);
                         } else {
@@ -335,6 +336,8 @@ public class Server {
                     break;
                 default:
                     System.out.println("Operação não válida");
+                    break;
+                    
             }
 
 //            InetAddress IPAddress = receivePacket.getAddress();
