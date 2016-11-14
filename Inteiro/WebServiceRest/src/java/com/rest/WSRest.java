@@ -5,7 +5,6 @@
  */
 package com.rest;
 
-import controler.Conexao;
 import controler.Operacoes;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -32,13 +31,12 @@ public class WSRest {
     @Context
     private UriInfo context;
     public static ArrayList<BelasMensagens> lista = new ArrayList<>();
+    
     /**
      * Creates a new instance of WebServiceRest
      */
     public WSRest() {
-        BelasMensagens bm = new BelasMensagens();
-        bm.setBelasMensagens(1, "Mensagem teste", 1);
-        lista.add(bm);
+      
         
     }
 
@@ -50,26 +48,27 @@ public class WSRest {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("{id}")
-    public String getJson(@javax.ws.rs.PathParam("id") int id) {
-        
-    JSONObject obj = new JSONObject();
-	    
-	    for ( BelasMensagens bm : lista){
-		if(bm.getCodigo()==id){
-                    obj.put("mensagem", bm.getMensagem());
-		    obj.put("tipo", bm.getTipo());
-                }			
-            }
-		return obj.toString();
+    public String getJson(@javax.ws.rs.PathParam("id") int id) throws SQLException {
+           System.out.println("chegou");
+            JSONObject obj = new JSONObject();
+	    BelasMensagens bm = new BelasMensagens();
+            Operacoes op = new Operacoes();
+            bm = op.consultaMsg(id);
+	    obj.put("id", bm.getCodigo());
+            obj.put("mensagem", bm.getMensagem());
+            obj.put("tipo", bm.getTipo());
+                			
+            
+            System.out.println(obj.toString());
+            return obj.toString();
         
     }
     
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public String getlista() throws SQLException {
+    public List<BelasMensagens> getlista() throws SQLException {
 
         Operacoes op = new Operacoes();
-        System.out.println("chegou" + op.listaMsg().toString());
         return op.listaMsg();
         
     }
@@ -80,6 +79,15 @@ public class WSRest {
      */
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
-    public void putJson(String content) {
+    @Path("adicionamsg")
+    public void putJson(String j) throws SQLException {
+        Operacoes op = new Operacoes();
+        System.out.println("String json chegou:" + j);
+        JSONObject my_obj = new JSONObject(j);
+        BelasMensagens blmsg = new BelasMensagens();
+        blmsg.setCodigo(my_obj.getInt("id"));
+        blmsg.setMensagem(my_obj.getString("mensagem"));
+	blmsg.setTipo(my_obj.getInt("tipo"));
+        op.adicionaMsg(blmsg);
     }
 }

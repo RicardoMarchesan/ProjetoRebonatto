@@ -74,7 +74,7 @@ public class Operacoes {
         
         return lista;
     }
-    public static String listaMsg() throws SQLException{
+    public static List<BelasMensagens> listaMsg() throws SQLException{
         
         List<BelasMensagens> lista = new ArrayList();
         Statement stm = Conexao.statement();
@@ -87,6 +87,15 @@ public class Operacoes {
             BelasMensagens blmsg = new BelasMensagens();
             blmsg.setCodigo(resul.getInt("codigo"));
             blmsg.setMensagem(resul.getString("mensagem"));
+            blmsg.setTipo(resul.getInt("tipo"));           
+            lista.add(blmsg);
+        }
+        
+        return lista;
+       /* while (resul.next()){
+            BelasMensagens blmsg = new BelasMensagens();
+            blmsg.setCodigo(resul.getInt("codigo"));
+            blmsg.setMensagem(resul.getString("mensagem"));
             blmsg.setTipo(resul.getInt("tipo"));
             lista.add(blmsg);
             j.accumulate("codigo", blmsg.getCodigo());
@@ -94,8 +103,10 @@ public class Operacoes {
             j.accumulate("tipo", blmsg.getTipo());
         }
         System.out.println("lista: " + lista.toString());
-        
-        return j.toString();
+       // String test = '[{"codigo":1, "tipo":3, "mensagem":"Seja feliz"}, {"codigo":2, "tipo":3, "mensagem":"Exemplo"}, {"codigo":3, "tipo":5, "mensagem":"Exemplo 3"}]';
+
+
+        return j.toString();*/
         
     }
     
