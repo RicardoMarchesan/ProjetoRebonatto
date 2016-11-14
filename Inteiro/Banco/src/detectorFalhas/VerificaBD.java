@@ -6,6 +6,7 @@
 package detectorFalhas;
 
 import bancoDados.Conexao;
+import bancoDados.Operacoes;
 import construtor.BelasMensagens;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
@@ -13,6 +14,7 @@ import java.net.InetAddress;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -49,13 +51,24 @@ public class VerificaBD extends Thread {
             //detectar mensagens duplicadas aqui....
             try {
                 
+                Operacoes op = new Operacoes();
+//                op.ConsultaFraseD();
+                System.out.println("frases duplicadas");
+                List<BelasMensagens> lista = op.ConsultaFraseD();
+                
+                for(int i=0; i<lista.size(); i++)
+                {
+                    BelasMensagens msg1 = new BelasMensagens() ;
+                    msg1 = lista.get(i);
+                }
                 
                 
-            }catch(Exception e){
-                System.out.println(e);
+                    
+                } catch (SQLException ex) {
+                Logger.getLogger(VerificaBD.class.getName()).log(Level.SEVERE, null, ex);
+            }
             }
         
         }
 
-}
 }
