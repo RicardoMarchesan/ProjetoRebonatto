@@ -71,7 +71,7 @@ public class VerificaServidor extends Thread {
                 //   else System.out.println("Verifique Servidor morreu");
                 soc.close();
 
-            } catch (Exception e) {
+            } catch (Exception e) { 
                 System.out.println("Servidor morreu, verifique");
             }
         }
