@@ -5,6 +5,8 @@
  */
 package url.tela.view;
 
+import url.tela.cod.ServicoCliente;
+
 /**
  *
  * @author Jader
@@ -154,6 +156,8 @@ public class addtela extends javax.swing.JFrame {
     }//GEN-LAST:event_camptipoaddActionPerformed
 
     private void btadicionaraddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btadicionaraddActionPerformed
+        //ServicoCliente sc = new ServicoCliente();
+        //sc.adicionarMensagem(campcodadd, campmsgadd, camptipoadd);
         // TODO add your handling code here:
     }//GEN-LAST:event_btadicionaraddActionPerformed
 

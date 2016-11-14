@@ -5,6 +5,8 @@
  */
 package url.tela.view;
 
+import url.tela.cod.ServicoCliente;
+
 /**
  *
  * @author Jader
@@ -56,6 +58,11 @@ public class consultatela extends javax.swing.JFrame {
         jScrollPane1.setViewportView(campmsgcons);
 
         btprocurarcons.setText("Procurar");
+        btprocurarcons.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btprocurarconsActionPerformed(evt);
+            }
+        });
 
         btvoltarcons.setText("Voltar");
         btvoltarcons.addActionListener(new java.awt.event.ActionListener() {
@@ -128,6 +135,13 @@ public class consultatela extends javax.swing.JFrame {
     private void btvoltarconsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btvoltarconsActionPerformed
         this.dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_btvoltarconsActionPerformed
+
+    private void btprocurarconsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btprocurarconsActionPerformed
+        //ServicoCliente sc = new ServicoCliente();
+        //sc.consultaMensagem(campcodcons);
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btprocurarconsActionPerformed
 
     /**
      * @param args the command line arguments

@@ -59,6 +59,10 @@ public class ServicoCliente {
      */
     @WebMethod(operationName = "excluiMensagem")
     public BelasMensagens excluiMensagem(@WebParam(name = "codigo") int codigo) throws IOException {
+        Operacoes op = new Operacoes();
+        //op.deletaMsg(codigo);
+        
+        
         //TODO write your implementation code here:
         return null;
     }
@@ -68,6 +72,9 @@ public class ServicoCliente {
      */
     @WebMethod(operationName = "consultaMensagem")
     public BelasMensagens consultaMensagem(@WebParam(name = "codigo") int codigo) throws IOException {
+        Operacoes op = new Operacoes();
+        //op.consultaMsg(codigo);
+        
         //TODO write your implementation code here:
         return null;
     }
@@ -77,7 +84,10 @@ public class ServicoCliente {
      */
     @WebMethod(operationName = "listaTipo")
     public List listaTipo(@WebParam(name = "codigo") int codigo) throws IOException {
+        Operacoes op = new Operacoes();
+        //op.listaMsgInt(codigo);
         //TODO write your implementation code here:
+        
         return null;
     }
 
@@ -87,6 +97,9 @@ public class ServicoCliente {
     @WebMethod(operationName = "aleatoriaMensagem")
     public BelasMensagens aleatoriaMensagem(@WebParam(name = "tipo") int tipo) throws IOException {
         //TODO write your implementation code here:
+        Operacoes op = new Operacoes();
+        //op.consultaTipo(tipo);
+        
         return null;
     }
 

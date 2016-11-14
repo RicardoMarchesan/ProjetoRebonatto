@@ -5,6 +5,8 @@
  */
 package url.tela.view;
 
+import url.tela.cod.ServicoCliente;
+
 /**
  *
  * @author Jader
@@ -54,6 +56,11 @@ public class excluitela extends javax.swing.JFrame {
         });
 
         btexcluirexc.setText("Excluir");
+        btexcluirexc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btexcluirexcActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -116,6 +123,12 @@ public class excluitela extends javax.swing.JFrame {
     private void btvoltarexcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btvoltarexcActionPerformed
         this.dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_btvoltarexcActionPerformed
+
+    private void btexcluirexcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btexcluirexcActionPerformed
+        //ServicoCliente sc = new ServicoCliente();
+        //sc.excluiMensagem(campcodexc);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btexcluirexcActionPerformed
 
     /**
      * @param args the command line arguments

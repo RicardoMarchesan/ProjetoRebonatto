@@ -5,6 +5,8 @@
  */
 package url.tela.view;
 
+import url.tela.cod.ServicoCliente;
+
 /**
  *
  * @author Jader
@@ -50,6 +52,11 @@ public class aleatoriatela extends javax.swing.JFrame {
         });
 
         btgeraraleat.setText("Gerar");
+        btgeraraleat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btgeraraleatActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("Mensagem");
 
@@ -136,6 +143,12 @@ public class aleatoriatela extends javax.swing.JFrame {
     private void btvoltaraleatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btvoltaraleatActionPerformed
         this.dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_btvoltaraleatActionPerformed
+
+    private void btgeraraleatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btgeraraleatActionPerformed
+        //ServicoCliente sc = new ServicoCliente();        
+        //sc.aleatoriaMensagem(camptipoaleat);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btgeraraleatActionPerformed
 
     /**
      * @param args the command line arguments
