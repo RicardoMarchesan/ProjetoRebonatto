@@ -119,6 +119,25 @@ public class Server {
             int operacao = Integer.parseInt(tipoop);
             switch (operacao) {
                 case 404: // requisição se está vivo
+                   
+                    /* //verificação por tcp se der errado foi eu GUI que fiz ahaha 
+                    // não consegui fazer funcionar em tcp por que o psiu recebe por udp
+                    Socket soc;
+                    ServerSocket ss;
+                    ObjectInputStream recebe;
+                    String msg2 = new String("404#");
+                    System.out.println("Servidor está vivo?  TCP");
+                    ss = new ServerSocket(2006);
+                    System.out.println("Aguardando conexoes");
+                    soc = ss.accept();
+                    recebe = new ObjectInputStream(soc.getInputStream());
+                    msg2 = (String) recebe.readObject();
+                    System.out.println("Recebido: " + msg2);
+                    soc.close();
+                    */ 
+                    
+                    //verificação em udp 
+                    
                     System.out.println("Tô vivo");
                     String alive = new String("Alive!");
                     sendData = alive.getBytes();
@@ -221,7 +240,7 @@ public class Server {
                         sendPacket = new DatagramPacket(sendData, sendData.length, IPAddress, port);
                         serverSocket.send(sendPacket);
                     } // Envio todos os pacotes da mensagem
-                    
+
                     try {
 
                         //String content = "This is the content to write into file";
@@ -269,12 +288,12 @@ public class Server {
                             serverSocket.send(sendPacket);
                         } // Envio todos os pacotes da mensagem
                     }
-                    
+
                     try {
 
                         //String content = "This is the content to write into file";
-                        logstring = "O ip " + receivePacket.getAddress().toString() +
-                                "consultou mensagens do tipo" + bmsg.getTipo()
+                        logstring = "O ip " + receivePacket.getAddress().toString()
+                                + "consultou mensagens do tipo" + bmsg.getTipo()
                                 + "no banco de dados.";
                         File file = new File("logalteracoes.txt");
 
@@ -297,7 +316,7 @@ public class Server {
                 case 6: // Msg Aleatória Tipo
                     bmsg2 = Operacoes.consultaTipo(bmsg.getTipo());
                     split = splitByNumber(bmsg2.getMensagem(), 110);
-                   // System.out.println("Consulta");
+                    // System.out.println("Consulta");
                     msgresposta = Integer.toString(split.length) + "#";
                     sendData = msgresposta.getBytes();
                     sendPacket = new DatagramPacket(sendData, sendData.length, IPAddress, port);
@@ -313,8 +332,8 @@ public class Server {
                     try {
 
                         //String content = "This is the content to write into file";
-                        logstring = "O ip " + receivePacket.getAddress().toString() +
-                                "consultou uma mensagem aleatória do tipo" + bmsg.getTipo()
+                        logstring = "O ip " + receivePacket.getAddress().toString()
+                                + "consultou uma mensagem aleatória do tipo" + bmsg.getTipo()
                                 + "no banco de dados.";
                         File file = new File("logalteracoes.txt");
 
@@ -337,7 +356,7 @@ public class Server {
                 default:
                     System.out.println("Operação não válida");
                     break;
-                    
+
             }
 
 //            InetAddress IPAddress = receivePacket.getAddress();
