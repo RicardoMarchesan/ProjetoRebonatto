@@ -41,7 +41,7 @@ $iddel = $_GET["id"];
 $curl = curl_init();
 
 curl_setopt_array($curl, array(
-  CURLOPT_PORT => "8080", //porta do WS
+  CURLOPT_PORT => "13589", //porta do WS
   CURLOPT_URL => "http://localhost:8080/WebServiceRest/javaws/wsrest". $iddel, //Caminho do WS + string do DELETE, recuperado pelo GET
   CURLOPT_RETURNTRANSFER => true, //Recebe resposta
   CURLOPT_ENCODING => "", //Decodificação
@@ -106,8 +106,8 @@ else
   //Inicia a biblioteca cURL do PHP
   $curl = curl_init();
   curl_setopt_array($curl, array(
-  CURLOPT_PORT => "8080", //porta do WS
-  CURLOPT_URL => "http://localhost:8080/WebServiceRest/javaws/wsrest", //Caminho do WS que vai receber o GET
+  CURLOPT_PORT => "13589", //porta do WS
+  CURLOPT_URL => "http://localhost:13589/WebServiceRest/javaws/wsrest", //Caminho do WS que vai receber o GET
   CURLOPT_RETURNTRANSFER => true, //Recebe resposta
   CURLOPT_ENCODING => "JSON", //Decodificação
   CURLOPT_MAXREDIRS => 10,
@@ -119,7 +119,7 @@ else
    ),
 )); //recebe retorno
 $data1 = curl_exec($curl); //Recebe a lista no formato jSon do WS
-print $data1;
+var_dump($data1);
 curl_close($curl); //Encerra a biblioteca
 $data = json_decode($data1); //Decodifica o retorno gerado no modelo jSon
 
