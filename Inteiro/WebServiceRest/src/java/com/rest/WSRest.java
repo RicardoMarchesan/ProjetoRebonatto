@@ -6,17 +6,23 @@
 package com.rest;
 
 import controler.Operacoes;
+import java.lang.ProcessBuilder.Redirect.Type;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Objects;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.Produces;
 import javax.ws.rs.GET;
+import static javax.ws.rs.HttpMethod.DELETE;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PUT;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
 import model.BelasMensagens;
 import org.json.JSONObject;
@@ -91,4 +97,72 @@ public class WSRest {
 	blmsg.setTipo(my_obj.getInt("tipo"));
         op.adicionaMsg(blmsg);
     }
+    
+    @Path("/excluirmsg/{codigo}")
+    @DELETE
+    @Produces(MediaType.APPLICATION_JSON)
+    public String DeleteMsg(@PathParam("codigo") Integer codigo) throws SQLException {
+        
+        Operacoes op = new Operacoes();
+        Character flag = jaExiste(codigo);
+        if (flag == 'n') {
+
+            try {
+                System.out.println("Carro de código " + codigo + " não encontrado para exclusão da base de dados.");
+            } catch (Exception e) {
+                
+            }
+
+            return "existe";
+
+        } else {
+            
+            BelasMensagens blm = new  BelasMensagens();
+               blm.setCodigo(codigo);
+            
+                Operacoes.deletaMsg(blm);
+                System.out.println("Mensagem excluida com sucesso");
+            
+            
+        }
+        return null;
+        
+
+    }
+    
+    @Path("/alterarmsg/{codigo}")
+    @PUT
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public String alteramsg(@PathParam("codigo") Integer codigo) throws SQLException{
+            
+	    BelasMensagens bm = new BelasMensagens();
+            Operacoes op = new Operacoes();
+            bm.setCodigo(codigo);
+            op.alteraMsg(bm);
+	    
+        
+        return null;
+        
+    }
+
+    public Character jaExiste(Integer codigo) throws SQLException {
+        Character flag = 'n';
+
+        List<BelasMensagens> todosmsg =new  ArrayList<BelasMensagens>();
+
+        Iterator it = todosmsg.iterator();
+
+        while (it.hasNext()) {
+            BelasMensagens msgIt = (BelasMensagens) it.next();
+
+            if (Objects.equals(codigo, msgIt.getCodigo())) {
+                flag = 's';
+            }
+        }
+
+        return flag;
+    }
+
+   
 }

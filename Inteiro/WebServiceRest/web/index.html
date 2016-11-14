@@ -12,7 +12,7 @@
     function getdetails() {
    
         var id = document.getElementById("id");
-        var url = "http://localhost:8080/WebServiceRest/javaws/wsrest/" + id.value;
+        var url = "http://localhost:13589/WebServiceRest/javaws/wsrest/" + id.value;
         xmlhttp.open('GET',url,true);
         xmlhttp.send(null);
 
@@ -47,13 +47,48 @@
     	var tipoPost = document.getElementById("tipoPost").value;
     	var json = '{"id":' + idPost + ', "mensagem":"' + mensagemPost + '","tipo":' + tipoPost + '}';
     	
-    	var urlPost = "http://localhost:8080/WebServiceRest/javaws/wsrest/adicionamsg";
+    	var urlPost = "http://localhost:13589/WebServiceRest/javaws/wsrest/adicionamsg";
 
         xmlhttp.open('POST',urlPost,true);
         xmlhttp.setRequestHeader('Content-Type', 'application/json');
         xmlhttp.send(json);
         
    	}
+    function deletedetails(){
+        
+        var id = document.getElementById("id");
+        var url = "http://localhost:13589/WebServiceRest/javaws/wsrest/" + id.value;
+        xmlhttp.open('DELETE',url,true);
+        xmlhttp.send(id);
+        xmlhttp.onreadystatechange = function() {
+             if (xmlhttp.readyState === 4){
+                if(xmlhttp.status === 200) {
+                    var det = eval( "(" +  xmlhttp.responseText + ")");
+                    alert("delete: " + xmlhttp.responseText);
+                     if (det.id ) {
+                        alert("Deletado com sucesso");
+                     }
+                     else {
+                         id.value = "";
+                         alert("Id invalido");
+                     }
+                }
+           }
+                     
+        }
+        
+        
+    }
+    function putdetails(){
+       var id = document.getElementById("id");
+        var mensagemGet = document.getElementById("mensagem").value;
+    	var tipoGet = document.getElementById("tipo").value;
+        var json = '{"id":' + id + ', "mensagem":"' + mensagemGet + '","tipo":' + tipoGet + '}';
+        var url = "http://localhost:13589/WebServiceRest/javaws/wsrest/" + id.value;
+        xmlhttp.open('PUT',url,true);
+        xmlhttp.send(json);
+        xmlhttp.setRequestHeader('Content-Type', 'application/json');
+    }
    	
   </script>
   </head>
@@ -97,10 +132,12 @@
        <td> ID:  </td>
        <td><input type="text" id="id" size="10"/>  
        <input type="button" value="Consultar" onclick="getdetails()"/>
+       <input type="button" value="Alterar" onclick="putdetails()">
+       <input type="button" value="Excluir" onclick="deletedetails()">
    </tr>
    <tr>
        <td>Mensagem:  </td>
-       <td><input type="text" readonly id="mensagemGet" size="20"/> </td>
+       <td><input type="text"  id="mensagemGet" size="20"/> </td>
    </tr>
 
    <tr>
@@ -110,5 +147,5 @@
    	
    </table>
 
-  </body>
+  
 </html>
