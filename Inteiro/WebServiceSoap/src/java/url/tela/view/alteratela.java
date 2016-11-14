@@ -30,12 +30,12 @@ public class alteratela extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        campocodalt = new javax.swing.JTextField();
+        campcodalt = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        campomsgalt = new javax.swing.JTextArea();
-        botaoalteraralt = new javax.swing.JButton();
-        botaovoltaralt = new javax.swing.JButton();
+        campmsgalt = new javax.swing.JTextArea();
+        btalteraralt = new javax.swing.JButton();
+        btvoltaralt = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -43,24 +43,24 @@ public class alteratela extends javax.swing.JFrame {
 
         jLabel2.setText("Código:");
 
-        campocodalt.addActionListener(new java.awt.event.ActionListener() {
+        campcodalt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campocodaltActionPerformed(evt);
+                campcodaltActionPerformed(evt);
             }
         });
 
         jLabel3.setText("Mensagem:");
 
-        campomsgalt.setColumns(20);
-        campomsgalt.setRows(5);
-        jScrollPane1.setViewportView(campomsgalt);
+        campmsgalt.setColumns(20);
+        campmsgalt.setRows(5);
+        jScrollPane1.setViewportView(campmsgalt);
 
-        botaoalteraralt.setText("Alterar");
+        btalteraralt.setText("Alterar");
 
-        botaovoltaralt.setText("Voltar");
-        botaovoltaralt.addActionListener(new java.awt.event.ActionListener() {
+        btvoltaralt.setText("Voltar");
+        btvoltaralt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botaovoltaraltActionPerformed(evt);
+                btvoltaraltActionPerformed(evt);
             }
         });
 
@@ -80,7 +80,7 @@ public class alteratela extends javax.swing.JFrame {
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(jLabel2)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(campocodalt, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(campcodalt, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(0, 0, Short.MAX_VALUE)))
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -88,9 +88,9 @@ public class alteratela extends javax.swing.JFrame {
                         .addComponent(jLabel1)
                         .addGap(76, 76, 76))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(botaovoltaralt)
+                        .addComponent(btvoltaralt)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(botaoalteraralt)
+                        .addComponent(btalteraralt)
                         .addContainerGap())))
         );
         jPanel1Layout.setVerticalGroup(
@@ -101,15 +101,15 @@ public class alteratela extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(campocodalt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(campcodalt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botaoalteraralt)
-                    .addComponent(botaovoltaralt))
+                    .addComponent(btalteraralt)
+                    .addComponent(btvoltaralt))
                 .addGap(0, 13, Short.MAX_VALUE))
         );
 
@@ -127,13 +127,13 @@ public class alteratela extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void campocodaltActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campocodaltActionPerformed
+    private void campcodaltActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campcodaltActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_campocodaltActionPerformed
+    }//GEN-LAST:event_campcodaltActionPerformed
 
-    private void botaovoltaraltActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaovoltaraltActionPerformed
+    private void btvoltaraltActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btvoltaraltActionPerformed
         this.dispose();        // TODO add your handling code here:
-    }//GEN-LAST:event_botaovoltaraltActionPerformed
+    }//GEN-LAST:event_btvoltaraltActionPerformed
 
     /**
      * @param args the command line arguments
@@ -171,10 +171,10 @@ public class alteratela extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton botaoalteraralt;
-    private javax.swing.JButton botaovoltaralt;
-    private javax.swing.JTextField campocodalt;
-    private javax.swing.JTextArea campomsgalt;
+    private javax.swing.JButton btalteraralt;
+    private javax.swing.JButton btvoltaralt;
+    private javax.swing.JTextField campcodalt;
+    private javax.swing.JTextArea campmsgalt;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

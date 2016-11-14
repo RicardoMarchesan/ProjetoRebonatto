@@ -9,14 +9,6 @@ package url.tela.view;
  *
  * @author Jader
  */
-
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import url.tela.cod.ServicoCliente;
-import url.banco.Operacoes;
-import url.banco.BelasMensagens;
-
 public class addtela extends javax.swing.JFrame {
 
     /**
@@ -38,14 +30,14 @@ public class addtela extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        campocodadd = new javax.swing.JTextField();
-        campotipoadd = new javax.swing.JTextField();
+        campcodadd = new javax.swing.JTextField();
+        camptipoadd = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        campomsgadd = new javax.swing.JTextArea();
+        campmsgadd = new javax.swing.JTextArea();
         jLabel4 = new javax.swing.JLabel();
-        botaoadicadd = new javax.swing.JButton();
-        botaovoltaradd = new javax.swing.JButton();
+        btadicionaradd = new javax.swing.JButton();
+        btvoltaradd = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -53,37 +45,37 @@ public class addtela extends javax.swing.JFrame {
 
         jLabel2.setText("Tipo:");
 
-        campocodadd.addActionListener(new java.awt.event.ActionListener() {
+        campcodadd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campocodaddActionPerformed(evt);
+                campcodaddActionPerformed(evt);
             }
         });
 
-        campotipoadd.addActionListener(new java.awt.event.ActionListener() {
+        camptipoadd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campotipoaddActionPerformed(evt);
+                camptipoaddActionPerformed(evt);
             }
         });
 
         jLabel3.setText("Mensagem:");
 
-        campomsgadd.setColumns(20);
-        campomsgadd.setRows(5);
-        jScrollPane1.setViewportView(campomsgadd);
+        campmsgadd.setColumns(20);
+        campmsgadd.setRows(5);
+        jScrollPane1.setViewportView(campmsgadd);
 
         jLabel4.setText("Adicionar Mensagem");
 
-        botaoadicadd.setText("Adicionar");
-        botaoadicadd.addActionListener(new java.awt.event.ActionListener() {
+        btadicionaradd.setText("Adicionar");
+        btadicionaradd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botaoadicaddActionPerformed(evt);
+                btadicionaraddActionPerformed(evt);
             }
         });
 
-        botaovoltaradd.setText("Voltar");
-        botaovoltaradd.addActionListener(new java.awt.event.ActionListener() {
+        btvoltaradd.setText("Voltar");
+        btvoltaradd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botaovoltaraddActionPerformed(evt);
+                btvoltaraddActionPerformed(evt);
             }
         });
 
@@ -105,16 +97,16 @@ public class addtela extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(campocodadd, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(campcodadd, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(30, 30, 30)
                                 .addComponent(jLabel2)
                                 .addGap(18, 18, 18)
-                                .addComponent(campotipoadd, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(camptipoadd, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 58, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(botaovoltaradd)
+                        .addComponent(btvoltaradd)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(botaoadicadd)))
+                        .addComponent(btadicionaradd)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -125,17 +117,17 @@ public class addtela extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(campocodadd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(campcodadd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
-                    .addComponent(campotipoadd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(camptipoadd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botaoadicadd)
-                    .addComponent(botaovoltaradd))
+                    .addComponent(btadicionaradd)
+                    .addComponent(btvoltaradd))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -153,32 +145,22 @@ public class addtela extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void campocodaddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campocodaddActionPerformed
+    private void campcodaddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campcodaddActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_campocodaddActionPerformed
+    }//GEN-LAST:event_campcodaddActionPerformed
 
-    private void campotipoaddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campotipoaddActionPerformed
+    private void camptipoaddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_camptipoaddActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_campotipoaddActionPerformed
+    }//GEN-LAST:event_camptipoaddActionPerformed
 
-    private void botaoadicaddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoadicaddActionPerformed
-        ServicoCliente sc=new ServicoCliente();
-        BelasMensagens bm=new BelasMensagens();
-        sc.adicionarMensagem(campocodadd, campomsgadd, campotipoadd);
-        Operacoes op=new Operacoes();
-        
-        try {
-            op.adicionaMsg(bm);
-            // TODO add your handling code here:
-        } catch (SQLException ex) {
-            Logger.getLogger(addtela.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_botaoadicaddActionPerformed
+    private void btadicionaraddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btadicionaraddActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btadicionaraddActionPerformed
 
-    private void botaovoltaraddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaovoltaraddActionPerformed
+    private void btvoltaraddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btvoltaraddActionPerformed
         this.dispose();
         // TODO add your handling code here:
-    }//GEN-LAST:event_botaovoltaraddActionPerformed
+    }//GEN-LAST:event_btvoltaraddActionPerformed
 
     /**
      * @param args the command line arguments
@@ -216,11 +198,11 @@ public class addtela extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton botaoadicadd;
-    private javax.swing.JButton botaovoltaradd;
-    private javax.swing.JTextField campocodadd;
-    private javax.swing.JTextArea campomsgadd;
-    private javax.swing.JTextField campotipoadd;
+    private javax.swing.JButton btadicionaradd;
+    private javax.swing.JButton btvoltaradd;
+    private javax.swing.JTextField campcodadd;
+    private javax.swing.JTextArea campmsgadd;
+    private javax.swing.JTextField camptipoadd;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

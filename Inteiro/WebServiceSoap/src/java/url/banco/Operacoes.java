@@ -18,6 +18,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+/**
+ *
+ * @author Djessica
+ */
 public class Operacoes {
     
     public static void adicionaMsg(BelasMensagens BLmsg) throws SQLException{

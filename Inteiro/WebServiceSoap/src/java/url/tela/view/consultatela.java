@@ -30,12 +30,12 @@ public class consultatela extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        campocodcons = new javax.swing.JTextField();
+        campcodcons = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        campomsgcons = new javax.swing.JTextArea();
-        botaoproccons = new javax.swing.JButton();
-        botaovoltarcons = new javax.swing.JButton();
+        campmsgcons = new javax.swing.JTextArea();
+        btprocurarcons = new javax.swing.JButton();
+        btvoltarcons = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -43,24 +43,24 @@ public class consultatela extends javax.swing.JFrame {
 
         jLabel2.setText("Código:");
 
-        campocodcons.addActionListener(new java.awt.event.ActionListener() {
+        campcodcons.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campocodconsActionPerformed(evt);
+                campcodconsActionPerformed(evt);
             }
         });
 
         jLabel3.setText("Mensagem:");
 
-        campomsgcons.setColumns(20);
-        campomsgcons.setRows(5);
-        jScrollPane1.setViewportView(campomsgcons);
+        campmsgcons.setColumns(20);
+        campmsgcons.setRows(5);
+        jScrollPane1.setViewportView(campmsgcons);
 
-        botaoproccons.setText("Procurar");
+        btprocurarcons.setText("Procurar");
 
-        botaovoltarcons.setText("Voltar");
-        botaovoltarcons.addActionListener(new java.awt.event.ActionListener() {
+        btvoltarcons.setText("Voltar");
+        btvoltarcons.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botaovoltarconsActionPerformed(evt);
+                btvoltarconsActionPerformed(evt);
             }
         });
 
@@ -78,13 +78,13 @@ public class consultatela extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addComponent(jLabel2)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(campocodcons, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(campcodcons, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(jLabel3)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(botaovoltarcons)
+                        .addComponent(btvoltarcons)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(botaoproccons)))
+                        .addComponent(btprocurarcons)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -95,15 +95,15 @@ public class consultatela extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(campocodcons, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(campcodcons, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botaoproccons)
-                    .addComponent(botaovoltarcons))
+                    .addComponent(btprocurarcons)
+                    .addComponent(btvoltarcons))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -121,13 +121,13 @@ public class consultatela extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void campocodconsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campocodconsActionPerformed
+    private void campcodconsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campcodconsActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_campocodconsActionPerformed
+    }//GEN-LAST:event_campcodconsActionPerformed
 
-    private void botaovoltarconsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaovoltarconsActionPerformed
+    private void btvoltarconsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btvoltarconsActionPerformed
         this.dispose();        // TODO add your handling code here:
-    }//GEN-LAST:event_botaovoltarconsActionPerformed
+    }//GEN-LAST:event_btvoltarconsActionPerformed
 
     /**
      * @param args the command line arguments
@@ -165,10 +165,10 @@ public class consultatela extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton botaoproccons;
-    private javax.swing.JButton botaovoltarcons;
-    private javax.swing.JTextField campocodcons;
-    private javax.swing.JTextArea campomsgcons;
+    private javax.swing.JButton btprocurarcons;
+    private javax.swing.JButton btvoltarcons;
+    private javax.swing.JTextField campcodcons;
+    private javax.swing.JTextArea campmsgcons;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

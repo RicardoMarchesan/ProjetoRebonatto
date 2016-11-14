@@ -30,12 +30,12 @@ public class aleatoriatela extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        campotipoaleat = new javax.swing.JTextField();
-        botaogeraaleat = new javax.swing.JButton();
+        camptipoaleat = new javax.swing.JTextField();
+        btgeraraleat = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        campomsgaleat = new javax.swing.JTextArea();
-        botaovoltaraleat = new javax.swing.JButton();
+        campmsgaleat = new javax.swing.JTextArea();
+        btvoltaraleat = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -43,24 +43,24 @@ public class aleatoriatela extends javax.swing.JFrame {
 
         jLabel2.setText("Tipo:");
 
-        campotipoaleat.addActionListener(new java.awt.event.ActionListener() {
+        camptipoaleat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campotipoaleatActionPerformed(evt);
+                camptipoaleatActionPerformed(evt);
             }
         });
 
-        botaogeraaleat.setText("Gerar");
+        btgeraraleat.setText("Gerar");
 
         jLabel3.setText("Mensagem");
 
-        campomsgaleat.setColumns(20);
-        campomsgaleat.setRows(5);
-        jScrollPane1.setViewportView(campomsgaleat);
+        campmsgaleat.setColumns(20);
+        campmsgaleat.setRows(5);
+        jScrollPane1.setViewportView(campmsgaleat);
 
-        botaovoltaraleat.setText("Voltar");
-        botaovoltaraleat.addActionListener(new java.awt.event.ActionListener() {
+        btvoltaraleat.setText("Voltar");
+        btvoltaraleat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botaovoltaraleatActionPerformed(evt);
+                btvoltaraleatActionPerformed(evt);
             }
         });
 
@@ -74,12 +74,12 @@ public class aleatoriatela extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(campotipoaleat, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(camptipoaleat, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
-                            .addComponent(botaogeraaleat))))
+                            .addComponent(btgeraraleat))))
                 .addGap(172, 172, 172))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
@@ -92,7 +92,7 @@ public class aleatoriatela extends javax.swing.JFrame {
                         .addComponent(jLabel1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(159, 159, 159)
-                        .addComponent(botaovoltaraleat)))
+                        .addComponent(btvoltaraleat)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -102,16 +102,16 @@ public class aleatoriatela extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(campotipoaleat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(camptipoaleat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(botaogeraaleat)
+                .addComponent(btgeraraleat)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(botaovoltaraleat)
+                .addComponent(btvoltaraleat)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -129,13 +129,13 @@ public class aleatoriatela extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void campotipoaleatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campotipoaleatActionPerformed
+    private void camptipoaleatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_camptipoaleatActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_campotipoaleatActionPerformed
+    }//GEN-LAST:event_camptipoaleatActionPerformed
 
-    private void botaovoltaraleatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaovoltaraleatActionPerformed
+    private void btvoltaraleatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btvoltaraleatActionPerformed
         this.dispose();        // TODO add your handling code here:
-    }//GEN-LAST:event_botaovoltaraleatActionPerformed
+    }//GEN-LAST:event_btvoltaraleatActionPerformed
 
     /**
      * @param args the command line arguments
@@ -173,10 +173,10 @@ public class aleatoriatela extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton botaogeraaleat;
-    private javax.swing.JButton botaovoltaraleat;
-    private javax.swing.JTextArea campomsgaleat;
-    private javax.swing.JTextField campotipoaleat;
+    private javax.swing.JButton btgeraraleat;
+    private javax.swing.JButton btvoltaraleat;
+    private javax.swing.JTextArea campmsgaleat;
+    private javax.swing.JTextField camptipoaleat;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

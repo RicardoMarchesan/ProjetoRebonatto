@@ -48,7 +48,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="campotipolist" min="-2" pref="71" max="-2" attributes="0"/>
+                          <Component id="camptipolist" min="-2" pref="71" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -57,9 +57,9 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
                       <Group type="102" attributes="0">
-                          <Component id="botaovoltarlist" min="-2" max="-2" attributes="0"/>
+                          <Component id="btvoltarlist" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
-                          <Component id="botaolistarlist" min="-2" max="-2" attributes="0"/>
+                          <Component id="btlistarlist" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Component id="jScrollPane1" min="-2" pref="380" max="-2" attributes="0"/>
                   </Group>
@@ -78,15 +78,15 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="campotipolist" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="camptipolist" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
                   <EmptySpace pref="8" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="botaolistarlist" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="botaovoltarlist" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btlistarlist" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btvoltarlist" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jScrollPane1" min="-2" pref="187" max="-2" attributes="0"/>
@@ -106,9 +106,9 @@
             <Property name="text" type="java.lang.String" value="Tipo:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="campotipolist">
+        <Component class="javax.swing.JTextField" name="camptipolist">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="campotipolistActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="camptipolistActionPerformed"/>
           </Events>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane1">
@@ -118,7 +118,7 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JList" name="listalist">
+            <Component class="javax.swing.JList" name="jList1">
               <Properties>
                 <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
                   <StringArray count="5">
@@ -136,17 +136,17 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JButton" name="botaolistarlist">
+        <Component class="javax.swing.JButton" name="btlistarlist">
           <Properties>
             <Property name="text" type="java.lang.String" value="Listar"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="botaovoltarlist">
+        <Component class="javax.swing.JButton" name="btvoltarlist">
           <Properties>
             <Property name="text" type="java.lang.String" value="Voltar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botaovoltarlistActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btvoltarlistActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
