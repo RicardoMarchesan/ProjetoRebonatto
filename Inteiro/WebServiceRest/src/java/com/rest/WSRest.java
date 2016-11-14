@@ -130,20 +130,20 @@ public class WSRest {
 
     }
     
-    @Path("/alterarmsg/{codigo}")
+  
     @PUT
-    @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public String alteramsg(@PathParam("codigo") Integer codigo) throws SQLException{
-            
-	    BelasMensagens bm = new BelasMensagens();
-            Operacoes op = new Operacoes();
-            bm.setCodigo(codigo);
-            op.alteraMsg(bm);
-	    
-        
-        return null;
-        
+    @Path("/altera")
+    public void alteramsg(String j) throws SQLException {
+        Operacoes op = new Operacoes();
+        System.out.println("String json chegou:" + j);
+        JSONObject my_obj = new JSONObject(j);
+        BelasMensagens blmsg = new BelasMensagens();
+        blmsg.setCodigo(my_obj.getInt("id"));
+        blmsg.setMensagem(my_obj.getString("mensagem"));
+	blmsg.setTipo(my_obj.getInt("tipo"));
+        op.alteraMsg(blmsg);
+ 
     }
 
     public Character jaExiste(Integer codigo) throws SQLException {
