@@ -280,7 +280,8 @@ public class Client {
                 System.out.println("Sua mensagem é: "+msg);
                 
                 break;
-            case 7:
+            case 0:
+                System.out.println("Você escolheu sair do programa.");
                 break;
 
             default:

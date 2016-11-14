@@ -39,6 +39,7 @@ public class Server {
         byte[] sendData = new byte[1024];
         String tipoop = new String();
 
+        String logstring = new String();
         String[] split;
         while (true) {
             DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
@@ -122,22 +123,92 @@ public class Server {
                     sendData = alive.getBytes();
                     sendPacket = new DatagramPacket(sendData, sendData.length, IPAddress, port);
                     serverSocket.send(sendPacket);
+                    break;
                 case 1: // Adiciona
                     Operacoes.adicionaMsg(bmsg);
-                    System.out.println("Adiciona");
+                    try {
+
+                        //String content = "This is the content to write into file";
+                        logstring = "O ip " + receivePacket.getAddress().toString()
+                                + "adicionou a mensagem de código" + bmsg.getCodigo()
+                                + "ao banco de dados.";
+                        File file = new File("logalteracoes.txt");
+
+                        // if file doesnt exists, then create it
+                        if (!file.exists()) {
+                            file.createNewFile();
+                        }
+
+                        FileWriter fw = new FileWriter(file.getAbsoluteFile());
+                        BufferedWriter bw = new BufferedWriter(fw);
+                        bw.write(logstring);
+                        bw.close();
+
+                        System.out.println("Done");
+
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    //System.out.println("Adiciona");
                     break;
                 case 2: // Altera
                     Operacoes.alteraMsg(bmsg);
-                    System.out.println("Altera");
+                    try {
+
+                        //String content = "This is the content to write into file";
+                        logstring = "O ip " + receivePacket.getAddress().toString()
+                                + "alterou a mensagem de código" + bmsg.getCodigo()
+                                + "ao banco de dados.";
+                        File file = new File("logalteracoes.txt");
+
+                        // if file doesnt exists, then create it
+                        if (!file.exists()) {
+                            file.createNewFile();
+                        }
+
+                        FileWriter fw = new FileWriter(file.getAbsoluteFile());
+                        BufferedWriter bw = new BufferedWriter(fw);
+                        bw.write(logstring);
+                        bw.close();
+
+                        System.out.println("Done");
+
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+//                    System.out.println("Altera");
                     break;
                 case 3: // Exclui
                     Operacoes.deletaMsg(bmsg);
-                    System.out.println("Exclui");
+                    try {
+
+                        //String content = "This is the content to write into file";
+                        logstring = "O ip " + receivePacket.getAddress().toString()
+                                + "excluiu a mensagem de código" + bmsg.getCodigo()
+                                + "ao banco de dados.";
+                        File file = new File("logalteracoes.txt");
+
+                        // if file doesnt exists, then create it
+                        if (!file.exists()) {
+                            file.createNewFile();
+                        }
+
+                        FileWriter fw = new FileWriter(file.getAbsoluteFile());
+                        BufferedWriter bw = new BufferedWriter(fw);
+                        bw.write(logstring);
+                        bw.close();
+
+                        System.out.println("Done");
+
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+//                    System.out.println("Exclui");
                     break;
                 case 4: // Consulta
                     bmsg2 = Operacoes.consultaMsg(bmsg.getCodigo());
                     split = splitByNumber(bmsg2.getMensagem(), 110);
-                    System.out.println("Consulta");
+//                    System.out.println("Consulta");
                     msgresposta = Integer.toString(split.length) + "#";
                     sendData = msgresposta.getBytes();
                     sendPacket = new DatagramPacket(sendData, sendData.length, IPAddress, port);
@@ -149,11 +220,35 @@ public class Server {
                         sendPacket = new DatagramPacket(sendData, sendData.length, IPAddress, port);
                         serverSocket.send(sendPacket);
                     } // Envio todos os pacotes da mensagem
+                    
+                    try {
+
+                        //String content = "This is the content to write into file";
+                        logstring = "O ip " + receivePacket.getAddress().toString()
+                                + "consultou a mensagem de código" + bmsg2.getCodigo()
+                                + "no banco de dados.";
+                        File file = new File("logalteracoes.txt");
+
+                        // if file doesnt exists, then create it
+                        if (!file.exists()) {
+                            file.createNewFile();
+                        }
+
+                        FileWriter fw = new FileWriter(file.getAbsoluteFile());
+                        BufferedWriter bw = new BufferedWriter(fw);
+                        bw.write(logstring);
+                        bw.close();
+
+                        System.out.println("Done");
+
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                     break;
                 case 5: // ListaTipo
                     List<BelasMensagens> lista;
                     lista = Operacoes.listamsg(bmsg.getTipo());
-                    System.out.println("Lista Tipo");
+                    //System.out.println("Lista Tipo");
                     msgresposta = Integer.toString(lista.size()) + "#";
                     sendData = msgresposta.getBytes();
                     sendPacket = new DatagramPacket(sendData, sendData.length, IPAddress, port);
@@ -173,11 +268,35 @@ public class Server {
                             serverSocket.send(sendPacket);
                         } // Envio todos os pacotes da mensagem
                     }
+                    
+                    try {
+
+                        //String content = "This is the content to write into file";
+                        logstring = "O ip " + receivePacket.getAddress().toString() +
+                                "consultou mensagens do tipo" + bmsg.getTipo()
+                                + "no banco de dados.";
+                        File file = new File("logalteracoes.txt");
+
+                        // if file doesnt exists, then create it
+                        if (!file.exists()) {
+                            file.createNewFile();
+                        }
+
+                        FileWriter fw = new FileWriter(file.getAbsoluteFile());
+                        BufferedWriter bw = new BufferedWriter(fw);
+                        bw.write(logstring);
+                        bw.close();
+
+                        System.out.println("Done");
+
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                     break;
                 case 6: // Msg Aleatória Tipo
                     bmsg2 = Operacoes.consultaTipo(bmsg.getTipo());
                     split = splitByNumber(bmsg2.getMensagem(), 110);
-                    System.out.println("Consulta");
+                   // System.out.println("Consulta");
                     msgresposta = Integer.toString(split.length) + "#";
                     sendData = msgresposta.getBytes();
                     sendPacket = new DatagramPacket(sendData, sendData.length, IPAddress, port);
@@ -189,7 +308,30 @@ public class Server {
                         sendPacket = new DatagramPacket(sendData, sendData.length, IPAddress, port);
                         serverSocket.send(sendPacket);
                     } // Envio todos os pacotes da mensagem
-                    System.out.println("Mensagem Aleatória de tal Tipo");
+                    //System.out.println("Mensagem Aleatória de tal Tipo");
+                    try {
+
+                        //String content = "This is the content to write into file";
+                        logstring = "O ip " + receivePacket.getAddress().toString() +
+                                "consultou uma mensagem aleatória do tipo" + bmsg.getTipo()
+                                + "no banco de dados.";
+                        File file = new File("logalteracoes.txt");
+
+                        // if file doesnt exists, then create it
+                        if (!file.exists()) {
+                            file.createNewFile();
+                        }
+
+                        FileWriter fw = new FileWriter(file.getAbsoluteFile());
+                        BufferedWriter bw = new BufferedWriter(fw);
+                        bw.write(logstring);
+                        bw.close();
+
+                        System.out.println("Done");
+
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                     break;
                 default:
                     System.out.println("Operação não válida");
