@@ -46,7 +46,7 @@ public class VerificaServidor extends Thread {
             try {
                 //System.out.println("Servidor");
                 soc = new DatagramSocket();
-                IPAdress = InetAddress.getByName("localhost");
+                IPAdress = InetAddress.getByName("localhost");  //trocar pelo ip da maquina
                 pacote = new DatagramPacket(sendData, sendData.length, IPAdress, port);
                 soc.send(pacote);
                 System.out.println("Servidor esta vivo? ");
