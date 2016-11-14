@@ -26,6 +26,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
 import model.BelasMensagens;
 import org.json.JSONObject;
+import javax.ws.rs.core.Response;
 
 /**
  * REST Web Service
@@ -96,6 +97,7 @@ public class WSRest {
         blmsg.setMensagem(my_obj.getString("mensagem"));
 	blmsg.setTipo(my_obj.getInt("tipo"));
         op.adicionaMsg(blmsg);
+        
     }
     
     @Path("/excluirmsg/{codigo}")
@@ -104,18 +106,7 @@ public class WSRest {
     public String DeleteMsg(@PathParam("codigo") Integer codigo) throws SQLException {
         
         Operacoes op = new Operacoes();
-        Character flag = jaExiste(codigo);
-        if (flag == 'n') {
-
-            try {
-                System.out.println("Mensagem de código " + codigo + " não encontrado para exclusão da base de dados.");
-            } catch (Exception e) {
-                
-            }
-
-            return "existe";
-
-        } else {
+       
                 JSONObject obj = new JSONObject();
                 BelasMensagens blm = new  BelasMensagens();
                 blm = op.consultaMsg(codigo);
@@ -126,7 +117,7 @@ public class WSRest {
                 return obj.toString();
             
             
-       }
+       
         
         
 
@@ -145,26 +136,10 @@ public class WSRest {
         blmsg.setMensagem(my_obj.getString("mensagem"));
 	blmsg.setTipo(my_obj.getInt("tipo"));
         op.alteraMsg(blmsg);
- 
+        
     }
 
-    public Character jaExiste(Integer codigo) throws SQLException {
-        Character flag = 'n';
-
-        List<BelasMensagens> todosmsg =new  ArrayList<BelasMensagens>();
-
-        Iterator it = todosmsg.iterator();
-
-        while (it.hasNext()) {
-            BelasMensagens msgIt = (BelasMensagens) it.next();
-
-            if (Objects.equals(codigo, msgIt.getCodigo())) {
-                flag = 's';
-            }
-        }
-
-        return flag;
-    }
+   
 
    
 }
