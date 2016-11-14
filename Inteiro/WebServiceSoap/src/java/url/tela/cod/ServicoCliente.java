@@ -25,8 +25,8 @@ import url.banco.Operacoes;
 public class ServicoCliente {
 
     /**
-     * Operação de Web service
-     */
+    * Operação de Web service
+    */
     @WebMethod(operationName = "adicionarMensagem")
     public BelasMensagens adicionarMensagem(@WebParam(name = "codigo") int codigo, @WebParam(name = "mensagem") String mensagem, @WebParam(name = "tipo") int tipo) throws IOException {
         //TODO write your implementation code here:
