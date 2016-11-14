@@ -12,6 +12,8 @@ import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.ejb.Stateless;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import url.banco.BelasMensagens;
 import url.banco.Conexao;
 import url.banco.Operacoes;
@@ -60,7 +62,11 @@ public class ServicoCliente {
     @WebMethod(operationName = "excluiMensagem")
     public BelasMensagens excluiMensagem(@WebParam(name = "codigo") int codigo) throws IOException {
         //TODO write your implementation code here:
-        return null;
+        Operacoes op= new Operacoes();
+        BelasMensagens bm=new BelasMensagens();
+        bm.setCodigo(codigo);
+        //op.deletaMsg(bm);
+        return bm;
     }
 
     /**
@@ -69,6 +75,7 @@ public class ServicoCliente {
     @WebMethod(operationName = "consultaMensagem")
     public BelasMensagens consultaMensagem(@WebParam(name = "codigo") int codigo) throws IOException {
         //TODO write your implementation code here:
+        
         return null;
     }
 
@@ -88,6 +95,10 @@ public class ServicoCliente {
     public BelasMensagens aleatoriaMensagem(@WebParam(name = "tipo") int tipo) throws IOException {
         //TODO write your implementation code here:
         return null;
+    }
+
+    public void adicionarMensagem(JTextField campocodadd, JTextArea campomsgadd, JTextField campotipoadd) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 
