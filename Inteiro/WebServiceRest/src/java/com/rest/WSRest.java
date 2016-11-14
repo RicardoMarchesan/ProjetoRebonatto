@@ -108,7 +108,7 @@ public class WSRest {
         if (flag == 'n') {
 
             try {
-                System.out.println("Carro de código " + codigo + " não encontrado para exclusão da base de dados.");
+                System.out.println("Mensagem de código " + codigo + " não encontrado para exclusão da base de dados.");
             } catch (Exception e) {
                 
             }
@@ -116,16 +116,18 @@ public class WSRest {
             return "existe";
 
         } else {
-            
-            BelasMensagens blm = new  BelasMensagens();
-               blm.setCodigo(codigo);
-            
-                Operacoes.deletaMsg(blm);
+                JSONObject obj = new JSONObject();
+                BelasMensagens blm = new  BelasMensagens();
+                blm = op.consultaMsg(codigo);
+                obj.put("id", blm.getCodigo());
+                op.deletaMsg(blm);
+                //blm.setCodigo(codigo);
                 System.out.println("Mensagem excluida com sucesso");
+                return obj.toString();
             
             
-        }
-        return null;
+       }
+        
         
 
     }

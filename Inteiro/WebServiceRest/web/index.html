@@ -20,11 +20,10 @@
                var msgGet =  document.getElementById("mensagemGet");
                var tipoGet =  document.getElementById("tipoGet");
           
-               alert("status" + xmlhttp.status + "ready" + xmlhttp.readyState);
+              
                if (xmlhttp.readyState === 4){
             		   if(xmlhttp.status === 200) {
                        		var det = eval( "(" +  xmlhttp.responseText + ")");
-                                alert("det " + det.age);
                        		if (det.id > 0 ) {
                           	msgGet.value = det.mensagem;
                           	tipoGet.value = det.tipo;
@@ -54,12 +53,12 @@
         xmlhttp.send(json);
         
    	}
-    function deletedetails(){
+    function deletebyid(){
         
         var id = document.getElementById("id");
-        var url = "http://localhost:13589/WebServiceRest/javaws/wsrest/" + id.value;
+        var url = "http://localhost:13589/WebServiceRest/javaws/wsrest/excluirmsg/" + id.value;
         xmlhttp.open('DELETE',url,true);
-        xmlhttp.send(id);
+        xmlhttp.send(null);
         xmlhttp.onreadystatechange = function() {
              if (xmlhttp.readyState === 4){
                 if(xmlhttp.status === 200) {
@@ -79,12 +78,13 @@
         
         
     }
-    function putdetails(){
-       var id = document.getElementById("id");
-        var mensagemGet = document.getElementById("mensagem").value;
-    	var tipoGet = document.getElementById("tipo").value;
-        var json = '{"id":' + id + ', "mensagem":"' + mensagemGet + '","tipo":' + tipoGet + '}';
-        var url = "http://localhost:13589/WebServiceRest/javaws/wsrest/" + id.value;
+    function putbyid(){
+       var idPut = document.getElementById("idPut").value;
+        var mensagemPut = document.getElementById("mensagemPut").value;
+    	var tipoPut = document.getElementById("tipoPut").value;
+        var json = '{"id":' + idPut + ', "mensagem":"' + mensagemPut + '","tipo":' + tipoPut + '}';
+        alert(json);
+        var url = "http://localhost:13589/WebServiceRest/javaws/wsrest/altera";
         xmlhttp.open('PUT',url,true);
         xmlhttp.send(json);
         xmlhttp.setRequestHeader('Content-Type', 'application/json');
@@ -132,8 +132,7 @@
        <td> ID:  </td>
        <td><input type="text" id="id" size="10"/>  
        <input type="button" value="Consultar" onclick="getdetails()"/>
-       <input type="button" value="Alterar" onclick="putdetails()">
-       <input type="button" value="Excluir" onclick="deletedetails()">
+       <input type="button" value="Excluir" onclick="deletebyid()">
    </tr>
    <tr>
        <td>Mensagem:  </td>
@@ -145,6 +144,38 @@
        <td><input type="text" readonly id="tipoGet" size="10"/> </td>
    </tr>
    	
+   </table>
+       
+       <h3>Altera Bela Mensagem  </h3>
+   
+    <table>
+    
+     <tr>
+       <td>ID:  </td>
+       <td><input type="text" id="idPut" size="10"/>  
+   </tr>
+
+   <tr>
+       <td>Mensagem:  </td>
+       <td><input type="text" id="mensagemPut" size="20"/> </td>
+   </tr>
+
+   <tr>
+       <td>Tipo: </td>
+       <td>
+           <select id="tipoPut">
+               <option value = 1> Motivação </option>
+               <option value = 2> Felicitações </option>
+               <option value = 3> Saudade </option>
+               <option value = 4> Superação de Problemas </option>
+               <option value = 5> Amor </option>
+               <option value = 6> Experiência de Vida </option>
+               <option value = 7> Caráter </option>
+               <option value = 8> Top </option>
+       </select></td>
+   	   <td><input type="button" value="Alterar" onclick="putbyid()" /></td>
+   </tr>
+   <br>
    </table>
 
   
