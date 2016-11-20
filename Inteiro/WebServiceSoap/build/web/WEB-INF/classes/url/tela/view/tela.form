@@ -46,13 +46,13 @@
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="121" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="botaoaltera" min="-2" pref="153" max="-2" attributes="0"/>
-                              <Component id="botaoadd" min="-2" pref="153" max="-2" attributes="0"/>
-                              <Component id="botaoexclui" alignment="0" min="-2" pref="153" max="-2" attributes="0"/>
-                              <Component id="botaoconsulta" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="botaolista" alignment="0" min="-2" pref="153" max="-2" attributes="0"/>
-                              <Component id="botaoaleat" alignment="0" min="-2" pref="153" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="botaoaltera" max="32767" attributes="0"/>
+                              <Component id="botaoadd" max="32767" attributes="0"/>
+                              <Component id="botaoexclui" alignment="0" max="32767" attributes="0"/>
+                              <Component id="botaolista" alignment="0" max="32767" attributes="0"/>
+                              <Component id="botaoaleat" alignment="0" max="32767" attributes="0"/>
+                              <Component id="botaoconsulta" alignment="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">

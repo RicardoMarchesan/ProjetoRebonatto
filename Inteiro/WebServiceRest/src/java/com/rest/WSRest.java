@@ -6,23 +6,29 @@
 package com.rest;
 
 import controler.Operacoes;
+import java.lang.ProcessBuilder.Redirect.Type;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Objects;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.Produces;
 import javax.ws.rs.GET;
+import static javax.ws.rs.HttpMethod.DELETE;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PUT;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
 import model.BelasMensagens;
 import org.glassfish.jersey.server.ParamException;
 import org.json.JSONObject;
 import org.postgresql.util.PSQLException;
+import javax.ws.rs.core.Response;
 
 /**
  * REST Web
@@ -130,5 +136,35 @@ public class WSRest {
 	blmsg.setTipo(my_obj.getInt("tipo"));
         op.alteraMsg(blmsg);
  
+        op.adicionaMsg(blmsg);
+        
     }
+    
+    @Path("/excluirmsg/{codigo}")
+    @DELETE
+    @Produces(MediaType.APPLICATION_JSON)
+    public String DeleteMsg(@PathParam("codigo") Integer codigo) throws SQLException {
+        
+        Operacoes op = new Operacoes();
+       
+                JSONObject obj = new JSONObject();
+                BelasMensagens blm = new  BelasMensagens();
+                blm = op.consultaMsg(codigo);
+                obj.put("id", blm.getCodigo());
+                op.deletaMsg(blm);
+                //blm.setCodigo(codigo);
+                System.out.println("Mensagem excluida com sucesso");
+                return obj.toString();
+            
+            
+       
+        
+        
+
+    }
+    
+
+   
+
+   
 }
