@@ -17,7 +17,7 @@ public class Teste {
     public static void main(String[] args) throws SQLException {
      Conexao conecta = new Conexao();
      conecta.conecta();
-        BelasMensagens bm = new BelasMensagens(2, "Exemplo 2 ", 5);
+        BelasMensagens bm = new BelasMensagens(4, "Exemplo 4 ", 5);
         Operacoes op = new Operacoes();
         op.adicionaMsg(bm);
       
