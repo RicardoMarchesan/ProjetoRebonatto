@@ -9,7 +9,34 @@
        xmlhttp = new XMLHttpRequest();  
 
     }
-    function getdetails() {
+    
+    function postdetails() {
+    	var idPost = document.getElementById("idPost").value;
+    	var mensagemPost = document.getElementById("mensagemPost").value;
+    	var tipoPost = document.getElementById("tipoPost").value;
+    	var json = '{"id":' + idPost + ', "mensagem":"' + mensagemPost + '","tipo":' + tipoPost + '}';
+        
+    	var urlPost = "http://localhost:8080/WebServiceRest/javaws/wsrest/adicionamsg";
+        
+        xmlhttp.open('POST',urlPost,true);
+        xmlhttp.setRequestHeader('Content-Type', 'application/json');
+        xmlhttp.send(json);
+        
+          xmlhttp.onreadystatechange = function(){ 
+            if (xmlhttp.readyState === 4){
+                if(xmlhttp.status === 200) {
+                    var det = xmlhttp.responseText;
+                     if (det === "false" ) {
+                        alert("Código da Mensagem já existe");
+                     }else
+                         alert("Incluido com sucesso!");
+                 }
+             }
+         };
+        
+    }
+    
+     function getdetails() {
    
         var id = document.getElementById("id");
         var url = "http://localhost:8080/WebServiceRest/javaws/wsrest/" + id.value;
@@ -19,42 +46,83 @@
         xmlhttp.onreadystatechange = function() {
                var msgGet =  document.getElementById("mensagemGet");
                var tipoGet =  document.getElementById("tipoGet");
-          
-               alert("status" + xmlhttp.status + "ready" + xmlhttp.readyState);
-               if (xmlhttp.readyState === 4){
+                         if (xmlhttp.readyState === 4){
             		   if(xmlhttp.status === 200) {
                        		var det = eval( "(" +  xmlhttp.responseText + ")");
-                                alert("det " + det.age);
+                                
                        		if (det.id > 0 ) {
                           	msgGet.value = det.mensagem;
-                          	tipoGet.value = det.tipo;
+                                    switch(det.tipo){
+                                        case 1: tipoGet.value = "Motivação";
+                                        break;
+                                        case 2: tipoGet.value = "Felicitações";
+                                        break;
+                                        case 3: tipoGet.value = "Saudade";
+                                        break;
+                                        case 4: tipoGet.value = "Superação de Problemas";
+                                        break;
+                                        case 5: tipoGet.value = "Amor";
+                                        break;
+                                        case 6: tipoGet.value = "Experiência de Vida";
+                                        break;
+                                        case 7: tipoGet.value = "Caráter";
+                                        break;
+                                        case 8: tipoGet.value = "Top";
+                                        break;
+                                    }
                        		}
                        		else {
                            		msgGet.value = "";
                            		tipoGet.value ="";
-                           		alert("Id do Funcioário inválido");
+                           		alert("Não foi possível realizar a operação");
                        		}
                 		}
                			else
-                       alert("Error ->" + xmlhttp.responseText);
+                       alert("Id de Mensagem inválido");
                }
         };
     }
     
-    function postdetails() {
-    	var idPost = document.getElementById("idPost").value;
-    	var mensagemPost = document.getElementById("mensagemPost").value;
-    	var tipoPost = document.getElementById("tipoPost").value;
-    	var json = '{"id":' + idPost + ', "mensagem":"' + mensagemPost + '","tipo":' + tipoPost + '}';
+    function deletebyid(){
+         var id = document.getElementById("id");
+        var url = "http://localhost:8080/WebServiceRest/javaws/wsrest/delete/" + id.value;
+        xmlhttp.open('DELETE',url,true);
+        xmlhttp.send(null);
+        xmlhttp.onreadystatechange = function(){ 
+            if (xmlhttp.readyState === 4){
+                if(xmlhttp.status === 200) {
+                    var det = eval( "(" +  xmlhttp.responseText + ")");
+                    alert("delete: " + xmlhttp.responseText);
+                     if (det.id ) {
+                        alert("Deletado com sucesso");
+                     }
+                 
+                     else {
+                        msgGet.value = "";
+                        tipoGet.value ="";
+                        alert("ID Bela Mensagem inválido");	
+                	}
+                    }else
+                        alert("Erro:" + xmlhttp.responseText);
+                        
+               }
+           
+        };
+    
+    }
+    
+        function putbyid(){
+         var idPut = document.getElementById("idPut").value;
+    	var mensagemPut = document.getElementById("mensagemPut").value;
+    	var tipoPut = document.getElementById("tipoPut").value;
+    	var json = '{"id":' + idPut + ', "mensagem":"' + mensagemPut + '","tipo":' + tipoPut + '}';
     	
-    	var urlPost = "http://localhost:8080/WebServiceRest/javaws/wsrest/adicionamsg";
+    	var urlPut = "http://localhost:8080/WebServiceRest/javaws/wsrest/altera";
 
-        xmlhttp.open('POST',urlPost,true);
+        xmlhttp.open('PUT',urlPut,true);
         xmlhttp.setRequestHeader('Content-Type', 'application/json');
         xmlhttp.send(json);
-        
-   	}
-   	
+        }
   </script>
   </head>
   <body  onload="init()">
@@ -107,7 +175,43 @@
        <td>Tipo: </td>
        <td><input type="text" readonly id="tipoGet" size="10"/> </td>
    </tr>
+   <tr>
+       <td><input type="button" value="Deletar" onclick="deletebyid()"/></td>
+   </tr>
    	
+   </table>
+   <br>
+
+   <h3>Altera Bela Mensagem  </h3>
+   
+    <table>
+    
+     <tr>
+       <td>ID:  </td>
+       <td><input type="text" id="idPut" size="10"/>  
+   </tr>
+
+   <tr>
+       <td>Mensagem:  </td>
+       <td><input type="text" id="mensagemPut" size="20"/> </td>
+   </tr>
+
+   <tr>
+       <td>Tipo: </td>
+       <td>
+           <select id="tipoPut">
+               <option value = 1> Motivação </option>
+               <option value = 2> Felicitações </option>
+               <option value = 3> Saudade </option>
+               <option value = 4> Superação de Problemas </option>
+               <option value = 5> Amor </option>
+               <option value = 6> Experiência de Vida </option>
+               <option value = 7> Caráter </option>
+               <option value = 8> Top </option>
+       </select></td>
+   	   <td><input type="button" value="Alterar Registro" onclick="putbyid()" /></td>
+   </tr>
+   <br>
    </table>
 
   </body>

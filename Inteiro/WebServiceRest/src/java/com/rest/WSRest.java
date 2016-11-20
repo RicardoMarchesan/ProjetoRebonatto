@@ -12,6 +12,7 @@ import java.util.List;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.Produces;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -19,10 +20,12 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PUT;
 import javax.ws.rs.core.MediaType;
 import model.BelasMensagens;
+import org.glassfish.jersey.server.ParamException;
 import org.json.JSONObject;
+import org.postgresql.util.PSQLException;
 
 /**
- * REST Web Service
+ * REST Web
  *
  * @author marina
  */
@@ -80,8 +83,8 @@ public class WSRest {
      */
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    @Path("adicionamsg")
-    public void postJson(String j) throws SQLException {
+    @Path("/adicionamsg")
+    public boolean postJson(String j) throws SQLException {
         Operacoes op = new Operacoes();
         System.out.println("String json chegou:" + j);
         JSONObject my_obj = new JSONObject(j);
@@ -89,6 +92,43 @@ public class WSRest {
         blmsg.setCodigo(my_obj.getInt("id"));
         blmsg.setMensagem(my_obj.getString("mensagem"));
 	blmsg.setTipo(my_obj.getInt("tipo"));
-        op.adicionaMsg(blmsg);
+        try{
+            op.adicionaMsg(blmsg);
+        }catch(PSQLException e){
+            System.out.println("Erro" + e);
+            return false;
+        }
+        return true;
+    }
+    
+    
+    @DELETE
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/delete/{id}")
+    public String deletemsg(@javax.ws.rs.PathParam("id") int id) throws SQLException {
+            System.out.println("chegou");
+            JSONObject obj = new JSONObject();
+	    BelasMensagens bm = new BelasMensagens();
+            Operacoes op = new Operacoes();
+            bm = op.consultaMsg(id);
+            obj.put("id", bm.getCodigo());
+            op.deletaMsg(bm);
+            return obj.toString();
+        
+    }
+    
+    @PUT
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/altera")
+    public void alteramsg(String j) throws SQLException {
+        Operacoes op = new Operacoes();
+        System.out.println("String json chegou:" + j);
+        JSONObject my_obj = new JSONObject(j);
+        BelasMensagens blmsg = new BelasMensagens();
+        blmsg.setCodigo(my_obj.getInt("id"));
+        blmsg.setMensagem(my_obj.getString("mensagem"));
+	blmsg.setTipo(my_obj.getInt("tipo"));
+        op.alteraMsg(blmsg);
+ 
     }
 }
