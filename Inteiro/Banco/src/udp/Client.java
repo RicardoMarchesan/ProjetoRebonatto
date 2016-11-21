@@ -54,7 +54,7 @@ public class Client {
         String n = new String();
         String enviar = new String();
 
-        DatagramSocket serverSocket = new DatagramSocket(2007);
+        DatagramSocket serverSocket = new DatagramSocket();
         DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
 
         String sentence = new String();
@@ -66,20 +66,22 @@ public class Client {
                 System.out.println("Digite a mensagem:");
                 input = new Scanner(System.in);
                 msg = input.nextLine();
-                sendmsg = splitByNumber(msg, 110); // Splito a mensagem pra saber se precisa de mais de 1 string
+                sendmsg = splitByNumber(msg, 110);
                 System.out.println("Digite o código da mensagem:");
                 input = new Scanner(System.in);
                 msgcod = input.nextLine();
                 System.out.println("Digite o tipo da mensagem:");
                 input = new Scanner(System.in);
                 tipomsg = input.nextLine();
-                //System.out.println(sendmsg.length);
+//                System.out.println(sendmsg.length);
 
                 n = new String();
                 n = Integer.toString(sendmsg.length) + "#";
                 sendData = n.getBytes();
                 sendPacket = new DatagramPacket(sendData, sendData.length, IPAddress, 2006);
                 clientSocket.send(sendPacket); // Enviei quantas mensagens vou precisar
+                System.out.println(n);
+//                Thread.sleep(2000);
 
                 enviar = new String();
                 enviar += "1#" + msgcod + "#" + tipomsg; // Tipo de operação 1

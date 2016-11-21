@@ -45,10 +45,13 @@ public class Server {
             DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
             serverSocket.receive(receivePacket);
             String sentence = new String(receivePacket.getData()); // Recebi o tamanho da mensagem
+            System.out.println(sentence);
             String msg = new String();
             BelasMensagens bmsg = new BelasMensagens();
 
+//            System.out.println(sentence);
             split = sentence.split("#");
+//            System.out.println(split[0]);
             int qtdmsg = Integer.parseInt(split[0].trim());
 
             if (qtdmsg == 404) {
@@ -126,13 +129,13 @@ public class Server {
                     serverSocket.send(sendPacket);
                     break;
                 case 1: // Adiciona
-                    Operacoes.adicionaMsg(bmsg);
+                    
                     try {
 
                         //String content = "This is the content to write into file";
                         logstring = "O ip " + receivePacket.getAddress().toString()
-                                + "adicionou a mensagem de código" + bmsg.getCodigo()
-                                + "ao banco de dados.";
+                                + " adicionou a mensagem de código " + bmsg.getCodigo()
+                                + " ao banco de dados.\r\n";
                         File file = new File("logalteracoes.txt");
 
                         // if file doesnt exists, then create it
@@ -140,7 +143,7 @@ public class Server {
                             file.createNewFile();
                         }
 
-                        FileWriter fw = new FileWriter(file.getAbsoluteFile());
+                        FileWriter fw = new FileWriter(file.getAbsoluteFile(), true);
                         BufferedWriter bw = new BufferedWriter(fw);
                         bw.write(logstring);
                         bw.close();
@@ -150,6 +153,7 @@ public class Server {
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
+                    Operacoes.adicionaMsg(bmsg);
                     //System.out.println("Adiciona");
                     break;
                 case 2: // Altera
@@ -158,8 +162,8 @@ public class Server {
 
                         //String content = "This is the content to write into file";
                         logstring = "O ip " + receivePacket.getAddress().toString()
-                                + "alterou a mensagem de código" + bmsg.getCodigo()
-                                + "ao banco de dados.";
+                                + " alterou a mensagem de código " + bmsg.getCodigo()
+                                + " no banco de dados.\r\n";
                         File file = new File("logalteracoes.txt");
 
                         // if file doesnt exists, then create it
@@ -167,7 +171,7 @@ public class Server {
                             file.createNewFile();
                         }
 
-                        FileWriter fw = new FileWriter(file.getAbsoluteFile());
+                        FileWriter fw = new FileWriter(file.getAbsoluteFile(), true);
                         BufferedWriter bw = new BufferedWriter(fw);
                         bw.write(logstring);
                         bw.close();
@@ -185,8 +189,8 @@ public class Server {
 
                         //String content = "This is the content to write into file";
                         logstring = "O ip " + receivePacket.getAddress().toString()
-                                + "excluiu a mensagem de código" + bmsg.getCodigo()
-                                + "ao banco de dados.";
+                                + " excluiu a mensagem de código " + bmsg.getCodigo()
+                                + " no banco de dados.\r\n";
                         File file = new File("logalteracoes.txt");
 
                         // if file doesnt exists, then create it
@@ -194,7 +198,7 @@ public class Server {
                             file.createNewFile();
                         }
 
-                        FileWriter fw = new FileWriter(file.getAbsoluteFile());
+                        FileWriter fw = new FileWriter(file.getAbsoluteFile(), true);
                         BufferedWriter bw = new BufferedWriter(fw);
                         bw.write(logstring);
                         bw.close();
@@ -226,8 +230,8 @@ public class Server {
 
                         //String content = "This is the content to write into file";
                         logstring = "O ip " + receivePacket.getAddress().toString()
-                                + "consultou a mensagem de código" + bmsg2.getCodigo()
-                                + "no banco de dados.";
+                                + " consultou a mensagem de código " + bmsg2.getCodigo()
+                                + " no banco de dados.\r\n";
                         File file = new File("logalteracoes.txt");
 
                         // if file doesnt exists, then create it
@@ -235,7 +239,7 @@ public class Server {
                             file.createNewFile();
                         }
 
-                        FileWriter fw = new FileWriter(file.getAbsoluteFile());
+                        FileWriter fw = new FileWriter(file.getAbsoluteFile(),true);
                         BufferedWriter bw = new BufferedWriter(fw);
                         bw.write(logstring);
                         bw.close();
@@ -274,8 +278,8 @@ public class Server {
 
                         //String content = "This is the content to write into file";
                         logstring = "O ip " + receivePacket.getAddress().toString() +
-                                "consultou mensagens do tipo" + bmsg.getTipo()
-                                + "no banco de dados.";
+                                " consultou mensagens do tipo " + bmsg.getTipo()
+                                + " no banco de dados.\r\n";
                         File file = new File("logalteracoes.txt");
 
                         // if file doesnt exists, then create it
@@ -283,7 +287,7 @@ public class Server {
                             file.createNewFile();
                         }
 
-                        FileWriter fw = new FileWriter(file.getAbsoluteFile());
+                        FileWriter fw = new FileWriter(file.getAbsoluteFile(), true);
                         BufferedWriter bw = new BufferedWriter(fw);
                         bw.write(logstring);
                         bw.close();
@@ -314,8 +318,8 @@ public class Server {
 
                         //String content = "This is the content to write into file";
                         logstring = "O ip " + receivePacket.getAddress().toString() +
-                                "consultou uma mensagem aleatória do tipo" + bmsg.getTipo()
-                                + "no banco de dados.";
+                                " consultou uma mensagem aleatória do tipo " + bmsg.getTipo()
+                                + " no banco de dados.\r\n";
                         File file = new File("logalteracoes.txt");
 
                         // if file doesnt exists, then create it
@@ -323,7 +327,7 @@ public class Server {
                             file.createNewFile();
                         }
 
-                        FileWriter fw = new FileWriter(file.getAbsoluteFile());
+                        FileWriter fw = new FileWriter(file.getAbsoluteFile(), true);
                         BufferedWriter bw = new BufferedWriter(fw);
                         bw.write(logstring);
                         bw.close();
