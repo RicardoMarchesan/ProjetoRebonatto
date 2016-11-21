@@ -5,6 +5,9 @@
  */
 package url.tela.view;
 
+import ServerSoap.Ctrl;
+import javax.swing.JOptionPane;
+import url.banco.BelasMensagens;
 import url.tela.cod.ServicoCliente;
 
 /**
@@ -158,6 +161,17 @@ public class alteratela extends javax.swing.JFrame {
     }//GEN-LAST:event_btvoltaraltActionPerformed
 
     private void btalteraraltActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btalteraraltActionPerformed
+        Ctrl oc = new Ctrl();
+        if(oc.alterar(Integer.parseInt(campcodalt.getText()), campmsgalt.getText(), Integer.parseInt(camptipoalt.getText()))){
+            JOptionPane.showMessageDialog(null, "Adicionada com sucesso");
+
+        }else{
+            JOptionPane.showMessageDialog(null, "Deu certo não");
+
+        };
+        
+
+
         //ServicoCliente sc = new ServicoCliente();
         //sc.alteraMensagem(campcodalt, campmsgalt, camptipoalt);
         // TODO add your handling code here:

@@ -5,6 +5,8 @@
  */
 package url.tela.view;
 
+import ServerSoap.Ctrl;
+import javax.swing.JOptionPane;
 import url.tela.cod.ServicoCliente;
 
 /**
@@ -156,6 +158,15 @@ public class addtela extends javax.swing.JFrame {
     }//GEN-LAST:event_camptipoaddActionPerformed
 
     private void btadicionaraddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btadicionaraddActionPerformed
+        Ctrl oc = new Ctrl();
+        if(oc.adicionar(Integer.parseInt(campcodadd.getText()), campmsgadd.getText(), Integer.parseInt(camptipoadd.getText()))){
+            JOptionPane.showMessageDialog(null, "Mensagem adicionada com sucesso!");
+        }else{
+            JOptionPane.showMessageDialog(null, "Erro ao adicionar mensagem");
+        };
+        
+        
+        
         //ServicoCliente sc = new ServicoCliente();
         //sc.adicionarMensagem(campcodadd, campmsgadd, camptipoadd);
         // TODO add your handling code here:

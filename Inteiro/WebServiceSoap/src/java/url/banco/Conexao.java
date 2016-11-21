@@ -18,7 +18,7 @@ public class Conexao {
     public Statement stm;//responsavel por preparar e realizar pesquisa no banco
     public ResultSet rs;//responsavel por armazenar o resulatdo de uma pesquisa
     //private String drive = "org.postgresql.Driver"; //identifica o banco de dados que esta usando
-    static String caminho = "jdbc:postgresql://localhost:5432/BelasMensagens";//porta do postgres
+    static String caminho = "jdbc:postgresql://187.0.12.29:5432/BelasMensagens";//porta do postgres
     static String usuario = "postgres";
     static String senha = "mdl";
     static Connection conn;

@@ -5,6 +5,7 @@
  */
 package url.tela.view;
 
+import ServerSoap.Ctrl;
 import url.tela.cod.ServicoCliente;
 
 /**
@@ -145,6 +146,10 @@ public class aleatoriatela extends javax.swing.JFrame {
     }//GEN-LAST:event_btvoltaraleatActionPerformed
 
     private void btgeraraleatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btgeraraleatActionPerformed
+        Ctrl oc = new Ctrl();
+        //oc.alterar(Integer.parseInt(campcodalt.getText()), campmsgalt.getText(), Integer.parseInt(camptipoalt.getText()));
+        
+
         //ServicoCliente sc = new ServicoCliente();        
         //sc.aleatoriaMensagem(camptipoaleat);
         // TODO add your handling code here:

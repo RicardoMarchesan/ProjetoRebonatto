@@ -5,6 +5,8 @@
  */
 package url.tela.view;
 
+import ServerSoap.Ctrl;
+import javax.swing.JOptionPane;
 import url.tela.cod.ServicoCliente;
 
 /**
@@ -125,6 +127,13 @@ public class excluitela extends javax.swing.JFrame {
     }//GEN-LAST:event_btvoltarexcActionPerformed
 
     private void btexcluirexcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btexcluirexcActionPerformed
+        Ctrl oc = new Ctrl();
+        if(oc.excluir(Integer.parseInt(campcodexc.getText()))){
+            JOptionPane.showMessageDialog(null, "Excluído com sucesso!");
+        }else{
+            JOptionPane.showMessageDialog(null, "Erro na exclusão!");
+        };
+        
         //ServicoCliente sc = new ServicoCliente();
         //sc.excluiMensagem(campcodexc);
         // TODO add your handling code here:

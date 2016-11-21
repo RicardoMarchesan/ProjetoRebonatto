@@ -6,6 +6,8 @@
 package url.tela.view;
 
 import url.tela.cod.ServicoCliente;
+import ServerSoap.Ctrl;
+import url.banco.BelasMensagens;
 
 /**
  *
@@ -137,6 +139,10 @@ public class consultatela extends javax.swing.JFrame {
     }//GEN-LAST:event_btvoltarconsActionPerformed
 
     private void btprocurarconsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btprocurarconsActionPerformed
+        Ctrl oc= new Ctrl();
+        BelasMensagens bm=new BelasMensagens();
+        bm = oc.Consultar(Integer.parseInt(campcodcons.getText()));
+        campmsgcons.setText(bm.getMensagem());
         //ServicoCliente sc = new ServicoCliente();
         //sc.consultaMensagem(campcodcons);
 
