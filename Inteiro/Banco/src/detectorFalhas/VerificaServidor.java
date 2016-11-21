@@ -6,9 +6,13 @@
 package detectorFalhas;
 
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
+import java.net.ServerSocket;
+import java.net.Socket;
 import java.net.SocketException;
 import java.net.UnknownHostException;
 import java.util.Scanner;
@@ -22,11 +26,13 @@ import java.util.logging.Logger;
 public class VerificaServidor extends Thread {
 
     public void run() {
-        // public void ThreadVerfica() throws UnknownHostException, SocketException, IOException {   
+         
         DatagramSocket soc = null;
         DatagramPacket pacote;
         InetAddress IPAdress;
         String msg;
+        String msg2;
+        String host = ("localhost");
         int port = 2006;
         int tmp; // tempo de verificação do servidor
         byte[] receiveData = new byte[1024];  // copiei do server do psiu
@@ -43,6 +49,27 @@ public class VerificaServidor extends Thread {
             } catch (Exception e) {
                 System.out.println("Erro na execução do tempo.");
             }
+            /*
+            try {
+            
+                //verificar server em TCP mas não rolou pq o psiu recebia UDP
+                    Socket soc2;
+                    ObjectOutputStream escreve;
+                    //String host = new String("localhost");
+                    msg2 = ("404#");
+                    int porta = 2006;
+                    System.out.println("Cliente");
+                    soc2 = new Socket(host, porta);
+                    escreve = new ObjectOutputStream(soc2.getOutputStream());
+                    escreve.writeObject(msg2);
+                    escreve.flush();
+                    soc.close(); 
+                    
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+            */
+            //  fiz em UDP achando que era tcp.
             try {
                 //System.out.println("Servidor");
                 soc = new DatagramSocket();
@@ -73,8 +100,7 @@ public class VerificaServidor extends Thread {
 
             } catch (Exception e) { 
                 System.out.println("Servidor morreu, verifique");
-            }
+            } 
         }
-
+        }
     }
-}
