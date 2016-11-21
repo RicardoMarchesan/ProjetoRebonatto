@@ -130,13 +130,13 @@ public class WSRest {
         Operacoes op = new Operacoes();
         System.out.println("String json chegou:" + j);
         JSONObject my_obj = new JSONObject(j);
+        
         BelasMensagens blmsg = new BelasMensagens();
         blmsg.setCodigo(my_obj.getInt("id"));
         blmsg.setMensagem(my_obj.getString("mensagem"));
 	blmsg.setTipo(my_obj.getInt("tipo"));
+       
         op.alteraMsg(blmsg);
- 
-        op.adicionaMsg(blmsg);
         
     }
     
@@ -155,14 +155,29 @@ public class WSRest {
                 //blm.setCodigo(codigo);
                 System.out.println("Mensagem excluida com sucesso");
                 return obj.toString();
-            
-            
-       
-        
-        
-
     }
     
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/random/{tipo}")
+    public String getTipo(@javax.ws.rs.PathParam("tipo") int tipo) throws SQLException {
+            JSONObject obj = new JSONObject();
+            Operacoes op = new Operacoes();
+
+	    BelasMensagens bm = new BelasMensagens();
+            
+            bm = op.consultaTipo(tipo);
+            System.out.println("bm:" + bm.getCodigo());
+
+
+            obj.put("id", bm.getCodigo());
+            obj.put("mensagem", bm.getMensagem());
+            obj.put("tipo", bm.getTipo());
+            
+            System.out.println("consultaTipo: " + obj.toString());
+            return obj.toString();
+        
+    }
 
    
 

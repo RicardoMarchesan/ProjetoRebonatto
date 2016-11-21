@@ -12,6 +12,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import org.json.JSONObject;
 
 /**
@@ -112,19 +113,35 @@ public class Operacoes {
     
     public static BelasMensagens consultaTipo(Integer tipo) throws SQLException{
         BelasMensagens blmsg = new BelasMensagens();
+        
+        List<BelasMensagens> lista = new ArrayList();
         Statement stm = Conexao.statement();
         ResultSet resul = stm.executeQuery("select * from bl_mensagens where tipo = " + tipo );
-        
-        resul.next();
-        if (!resul.wasNull()){
-            blmsg.setTipo(resul.getInt("tipo"));
-            blmsg.setCodigo(resul.getInt("codigo"));
-            blmsg.setMensagem(resul.getString("mensagem"));  
+        Random rand;
+        while (resul.next()){
+            if (!resul.wasNull()){
+                blmsg.setTipo(resul.getInt("tipo"));
+                blmsg.setCodigo(resul.getInt("codigo"));
+                blmsg.setMensagem(resul.getString("mensagem"));  
+                lista.add(blmsg);
+            }
         }
-        
+        int i = new Random().nextInt(lista.size());
+       
+        System.out.println("i: " + i + "        lista size: " + lista.size());
+        System.out.println("lista" + lista.get(i));
+        System.out.println("blmsg: " + blmsg.getCodigo());
+        blmsg=lista.get(i);
+ 
         return blmsg;
         
     }
+    
+    
+    
+    
+    
+
     
     
 }
