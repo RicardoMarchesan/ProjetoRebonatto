@@ -87,6 +87,20 @@ public class Operacoes {
         }
         
         return blmsg;
+    }
+    public static List<BelasMensagens> ConsultaFraseD () throws SQLException{
         
+        List<BelasMensagens> listaDP = new ArrayList();
+        Statement stm = Conexao.statement();
+        ResultSet resul = stm.executeQuery("select * from bl_mensagens b, "
+                + "(select mensagem from bl_mensagens group by mensagem having count(*) > 1) c where c.mensagem = b.mensagem");
+        
+        while (resul.next()){
+            BelasMensagens blmsg = new BelasMensagens();
+            blmsg.setMensagem(resul.getString("mensagem"));
+            listaDP.add(blmsg);
+        }
+        
+        return listaDP;
     }
 }
